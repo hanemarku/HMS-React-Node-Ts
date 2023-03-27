@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400500700&display=swap')
+
+
+// iOS Reset
+input
+  appearance: none
+  border-radius: 0
+
+
+.card-signup
+  margin: 2rem auto
+  display: flex
+  flex-direction: column
+  width: 80%
+  max-width: 500px
+  color: black
+  //background-color: #FFF
+  //border-radius: 10px
+  //box-shadow: 0 10px 20px 0 rgba(#999, .25)
+  padding: .75rem
+
+
+
+.card-image
+  border-radius: 8px
+  overflow: hidden
+  //padding-bottom: 65%
+  //background-imageUpload: url('https://www.wallpapers13.com/wp-content/uploads/2016/02/Hotel-terrace-chairs-ocean-Maldives-Hd-wallpaper-2560x1440.jpg')
+  background-repeat: no-repeat
+  background-size: 150%
+  background-position: 0 5%
+  position: relative
+
+
+.card-heading
+  text-align: center
+  font-weight: bold
+
+
+
+.card-form
+  padding: 2rem 1rem 0
+  display: flex
+  .column
+    flex: 1
+
+
+.input
+  display: flex
+  flex-direction: column-reverse
+  position: relative
+  padding-top: 1.5rem
+  &+.input
+    margin-top: 1.5rem
+
+    .form-control-select
+      padding: 7.2px
+
+
+
+.input-label
+  color: black
+  position: absolute
+  top: 1.5rem
+  transition: .25s ease
+
+
+.input-field
+  border: 0
+  z-index: 1
+  background-color: transparent
+  border-bottom: 2px solid #c5c1e8
+  font: inherit
+  font-size: 1.125rem
+  padding: .25rem 0
+  &:focus, &:valid
+    outline: 0
+    border-bottom-color: #6658d3
+    &+.input-label
+      background-color: transparent
+
+      color: #6658d3
+      transform: translateY(-1.5rem)
+
+
+
+
+.action
+  margin-top: 2rem
+
+
+.action-button
+  font: inherit
+  font-size: 1.25rem
+  padding: 1em
+  width: 100%
+  font-weight: 500
+  background-color: #6658d3
+  border-radius: 6px
+  color: #FFF
+  border: 0
+  &:focus
+    outline: 0
+
+
+
+.card-info
+  padding: 1rem 1rem
+  text-align: center
+  font-size: .875rem
+
+  a
+    display: block
+    color: #6658d3
+    text-decoration: none
+
+
+
+
+
+

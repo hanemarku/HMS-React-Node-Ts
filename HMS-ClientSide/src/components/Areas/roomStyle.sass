@@ -1,0 +1,190 @@
+/* Importing Fonts From Google Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&family=Poppins&display=swap')
+
+/* Resetting */
+*
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+  font-family: 'Poppins', sans-serif
+  //background-color: #eed6af
+
+
+body
+  background-color: #333333fd
+
+
+.wrapper
+  max-width: 1000px
+  margin: 10px auto
+
+
+
+.h2
+  font-size: 1.8rem
+  font-family: 'Nunito', sans-serif
+
+
+//#boxes
+//  height: 300px
+//  overflow-y: scroll
+//  overflow-x: hidden
+
+
+/* Scroll Bars */
+
+//#boxes::-webkit-scrollbar
+//  width: 6px
+
+
+//#boxes::-webkit-scrollbar-thumb
+//  background-color: #bbb
+//  border-radius: 5px
+//
+
+.box
+  padding: 15px
+
+
+img
+  width: inherit
+  height: 90%
+  object-fit: cover
+
+
+/* Alerts */
+
+.alert
+  padding: 0
+
+
+.alert-dismissible
+  padding-right: 0
+
+
+
+/* Select-box */
+.select-box
+  width: 100%
+  padding: 2px 15px
+  cursor: pointer
+  margin-bottom: 10px
+
+
+.select-box select
+  width: 100%
+  border: none
+  outline: none
+  cursor: pointer
+
+
+
+/* Checkbox */
+
+.option
+  display: block
+  position: relative
+  padding-left: 30px
+  margin-bottom: 12px
+  font-size: 0.95rem
+  font-weight: 900
+  cursor: pointer
+  user-select: none
+
+
+.option input
+  position: absolute
+  opacity: 0
+  cursor: pointer
+  height: 0
+  width: 0
+
+
+.checkmark
+  position: absolute
+  top: 0
+  left: 0
+  height: 18px
+  width: 18px
+  background-color: #fff
+  border: 2px solid #ddd
+  border-radius: 2px
+
+
+.option:hover input~.checkmark
+  background-color: #f1f1f1
+
+
+.option input:checked~.checkmark
+  border: none
+  background-color: #008351
+  transition: 300ms ease-in-out all
+
+
+.checkmark:after
+  content: "\2713"
+  position: absolute
+  display: none
+  color: #FFF
+  font-size: 1rem
+
+
+.option input:checked~.checkmark:after
+  display: block
+
+
+.option .checkmark:after
+  left: 3px
+  top: -3px
+  width: 5px
+  height: 10px
+
+
+
+/* Text Transformations */
+.text-muted
+  font-size: 0.8rem
+
+
+
+/* Buttons */
+button:focus
+  outline: none
+
+
+#btn-section
+  padding-right: 20px
+
+
+#btn-section .btn
+  border-radius: 2px
+  padding: 12px 18px
+  width: 100px
+
+
+//#btn-section .btn-cancel
+//  border: 1px solid #ff2020
+//  color: #ff2020
+//
+
+//#btn-section .btn-cancel:hover
+//  background-color: #ff2020
+//  color: #fff
+//
+//
+//#btn-section .btn-submit
+//  background-color: #ff3232
+//  color: #fff
+//
+//
+//#btn-section .btn-submit:hover
+//  background-color: #ff3232ea
+//  color: #f2f2f2
+//
+
+///* Media Queries */
+//@media(max-width: 575px)
+//.wrapper
+//  margin: 20px 10px
+
