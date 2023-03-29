@@ -1,0 +1,52 @@
+{
+  "name": "declarative-factory",
+  "version": "1.23.0",
+  "description": "A simple yet effective function to create factory objects through a declarative API.",
+  "keywords": [
+    "factory",
+    "abstract-factory",
+    "declarative"
+  ],
+  "author": "Anton Bagdatyev (Tonix)",
+  "license": "MIT",
+  "main": "dist/declarative-factory.js",
+  "module": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonix-tuft/declarative-factory.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "WEBPACK_ENV=watch webpack --progress --color --watch",
+    "clear-build": "find ./dist ! -name '.gitignore' -type f -exec rm -f {} +",
+    "dev-build": "WEBPACK_ENV=watch webpack --progress --color",
+    "build": "WEBPACK_ENV=build webpack",
+    "publish-git": "npm publish && git push && git push --tags",
+    "build-all": "npm run build && npm run dev-build",
+    "publish-patch": "npm run build-all && npm version patch && npm run publish-git",
+    "publish-minor": "npm run build-all && npm version minor && npm run publish-git",
+    "publish-major": "npm run build-all && npm version major && npm run publish-git"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^8.1.0",
+    "minimist": ">=1.2.3",
+    "serialize-javascript": "^3.1.0",
+    "terser-webpack-plugin": "^3.1.0",
+    "typescript": "^3.9.7",
+    "webpack": "^5.49.0",
+    "webpack-cli": "^4.8.0"
+  },
+  "bugs": {
+    "url": "https://github.com/tonix-tuft/declarative-factory/issues"
+  },
+  "homepage": "https://github.com/tonix-tuft/declarative-factory#readme",
+  "dependencies": {
+    "js-utl": "^4.28.0"
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
+}

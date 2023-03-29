@@ -1,0 +1,62 @@
+{
+  "name": "def-promise",
+  "version": "2.13.0",
+  "description": "A naive deferred promise, nothing more, nothing less.",
+  "keywords": [
+    "promise",
+    "deferred",
+    "deferred-promise"
+  ],
+  "author": "Anton Bagdatyev (Tonix)",
+  "license": "MIT",
+  "main": "dist/def-promise.js",
+  "module": "dist/es6/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonix-tuft/def-promise.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "WEBPACK_ENV=watch webpack --progress --color --watch",
+    "mkdir-build": "mkdir -p ./dist/es6",
+    "clear-build": "find ./dist ! -name '.gitignore' -type f -exec rm -f {} +",
+    "dev-build": "WEBPACK_ENV=watch webpack --progress --color",
+    "build": "WEBPACK_ENV=build webpack",
+    "publish-git": "npm publish && git push && git push --tags",
+    "build-all": "npm run mkdir-build && npm run clear-build && npm run build && npm run dev-build && npm run build-module",
+    "publish-patch": "npm run build-all && npm version patch && npm run publish-git",
+    "publish-minor": "npm run build-all && npm version minor && npm run publish-git",
+    "publish-major": "npm run build-all && npm version major && npm run publish-git",
+    "build-module": "cross-env BABEL_ENV=module ./node_modules/.bin/babel ./src --out-dir ./dist/es6 --source-maps --copy-files"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/traverse": "^7.11.0",
+    "@babel/types": "^7.11.0",
+    "@types/node": "^13.13.15",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "babel-loader": "^8.1.0",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.4",
+    "minimist": ">=1.2.3",
+    "serialize-javascript": ">=3.1.0",
+    "terser-webpack-plugin": "^3.1.0",
+    "typescript": "^3.9.7",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "bugs": {
+    "url": "https://github.com/tonix-tuft/def-promise/issues"
+  },
+  "homepage": "https://github.com/tonix-tuft/def-promise#readme",
+  "files": [
+    "dist",
+    "src"
+  ]
+}
