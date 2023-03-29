@@ -1,0 +1,4257 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var React = require('react');
+var ImmutableLinkedOrderedMap = require('immutable-linked-ordered-map');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
+var ImmutableLinkedOrderedMap__default = /*#__PURE__*/_interopDefaultLegacy(ImmutableLinkedOrderedMap);
+
+function unwrapExports (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
+function createCommonjsModule(fn, basedir, module) {
+	return module = {
+	  path: basedir,
+	  exports: {},
+	  require: function (path, base) {
+      return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+    }
+	}, fn(module, module.exports), module.exports;
+}
+
+function commonjsRequire () {
+	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
+}
+
+var arrayWithHoles = createCommonjsModule(function (module) {
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+module.exports = _arrayWithHoles;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+unwrapExports(arrayWithHoles);
+
+var iterableToArrayLimit = createCommonjsModule(function (module) {
+function _iterableToArrayLimit(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+
+  if (_i == null) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+
+  var _s, _e;
+
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+module.exports = _iterableToArrayLimit;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+unwrapExports(iterableToArrayLimit);
+
+var arrayLikeToArray = createCommonjsModule(function (module) {
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+module.exports = _arrayLikeToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+unwrapExports(arrayLikeToArray);
+
+var unsupportedIterableToArray = createCommonjsModule(function (module) {
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
+}
+
+module.exports = _unsupportedIterableToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+unwrapExports(unsupportedIterableToArray);
+
+var nonIterableRest = createCommonjsModule(function (module) {
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableRest;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+unwrapExports(nonIterableRest);
+
+var slicedToArray = createCommonjsModule(function (module) {
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
+}
+
+module.exports = _slicedToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+var _slicedToArray = unwrapExports(slicedToArray);
+
+var _typeof_1 = createCommonjsModule(function (module) {
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+var _typeof = unwrapExports(_typeof_1);
+
+var defineProperty = createCommonjsModule(function (module) {
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+var _defineProperty$1 = unwrapExports(defineProperty);
+
+var objectWithoutPropertiesLoose = createCommonjsModule(function (module) {
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+module.exports = _objectWithoutPropertiesLoose;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+unwrapExports(objectWithoutPropertiesLoose);
+
+var objectWithoutProperties = createCommonjsModule(function (module) {
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+  var target = objectWithoutPropertiesLoose(source, excluded);
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+module.exports = _objectWithoutProperties;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+var _objectWithoutProperties = unwrapExports(objectWithoutProperties);
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @typechecks
+ *
+ */
+
+/**
+ * @type {Function}
+ */
+const hasOwnProperty$1 = Object.prototype.hasOwnProperty;
+/**
+ * Function implementing "Object.is" behaviour.
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+ *
+ * @param {*} x The first value to compare.
+ * @param {*} y The second value to compare.
+ * @return {boolean} A boolean indicating whether or not the two arguments are the same value.
+ */
+
+function is(x, y) {
+  // SameValue algorithm
+  if (x === y) {
+    // Steps 1-5, 7-10
+    // Steps 6.b-6.e: +0 != -0
+    return x !== 0 || 1 / x === 1 / y;
+  } else {
+    // Step 6.a: NaN == NaN
+    return x !== x && y !== y;
+  }
+}
+/**
+ * Checks whether a prop of an object equals in the other object (shallow comparison).
+ *
+ * @param {Object} objA The first object.
+ * @param {Object} objB The second object.
+ * @param {string} prop The name of the property.
+ * @return {boolean} True if the value of "prop" in "objA" is shallowly equal to the value of "prop" in "objB".
+ */
+
+function objectPropEqual(objA, objB, prop) {
+  return hasOwnProperty$1.call(objB, prop) && is(objA[prop], objB[prop]);
+}
+/**
+ * Performs equality by iterating through keys on an object and returning "false"
+ * when any key has values which are not strictly equal between the arguments.
+ * Returns "true" when the values of all keys are strictly equal.
+ *
+ * @see https://stackoverflow.com/questions/22266826/how-can-i-do-a-shallow-comparison-of-the-properties-of-two-objects-with-javascri#answer-37636728
+ *
+ * @param {*} objA First object.
+ * @param {*} objB Second object.
+ * @return {boolean}
+ */
+
+function shallowEqual(objA, objB) {
+  if (is(objA, objB)) {
+    return true;
+  }
+
+  if (typeof objA !== "object" || objA === null || typeof objB !== "object" || objB === null) {
+    return false;
+  }
+
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  } // Test for A's keys different from B.
+
+
+  for (let i = 0; i < keysA.length; i++) {
+    const prop = keysA[i];
+
+    if (!objectPropEqual(objA, objB, prop)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/**
+ * Core utility functions.
+ */
+
+/**
+ * Optional configuration with useful properties.
+ *
+ * @type {Object}
+ */
+
+const config = {
+  uniqueIdPrefix: "",
+  elementUniqueIdPrefix: "",
+  checkNetworkURI: null
+};
+/**
+ * Tests if an object is empty.
+ *
+ * @param {Object} obj The object to test.
+ * @return {boolean} "true" if the given object is empty (does not have own properties), "false" otherwise.
+ */
+
+function isObjectEmpty(obj) {
+  for (const prop in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+/**
+ * @type {string}
+ */
+
+const objPrototypeToString = Object.prototype.toString.call({});
+/**
+ * Tests if a variable is an object.
+ *
+ * @param {*} obj The variable to test.
+ * @return {boolean} "true" if "obj" is indeed an object, "false" otherwise.
+ */
+
+const isObject = function (obj) {
+  return objPrototypeToString === Object.prototype.toString.call(obj);
+};
+/**
+ * Tests if a variable is a plain object (i.e. "{}", an object literal).
+ *
+ * @param {*} obj The variable to test.
+ * @return {boolean} "true" if "obj" is a plain object, "false" otherwise.
+ */
+
+const isPlainObject = obj => {
+  return obj !== null && typeof obj === "object" && obj.constructor === Object && isObject(obj);
+};
+/**
+ * Tests to see whether something is an array or not.
+ *
+ * @param {*} something A variable to check whether it is an array or not.
+ * @return {boolean} True if the parameter passed in is an array, false otherwise.
+ */
+
+function isArray(something) {
+  return Object.prototype.toString.call(something) === Object.prototype.toString.call([]);
+}
+/**
+ * Tests if a variable is empty returning true for empty strings and empty arrays.
+ *
+ * @param {*} data The variable to test.
+ * @return {boolean} True if the variable is empty, false otherwise.
+ */
+
+function isEmpty(data) {
+  return !data || data.length === 0;
+}
+/**
+ * Returns a reference to the global object.
+ *
+ * @return {Window|global} The global object (this function is cross-platform aware).
+ */
+
+function getGlobalObject() {
+  return typeof global !== "undefined" ? global : window;
+}
+/**
+ * @type {string}
+ */
+
+const JSUtlUniqueIdCounterProp = "JSUtlUniqueIdCounterLEzKKl87QCDxwVH";
+/**
+ * Generates a unique ID which can be used as an "id" attribute.
+ *
+ * @param {string|undefined} [uniqueIdPrefix] Local unique ID prefix which overrides the prefix
+ *                                            set on the "config" configuration object.
+ * @return {string} The unique ID.
+ */
+
+function uniqueId(uniqueIdPrefix = void 0) {
+  const globalObject = getGlobalObject();
+  globalObject[JSUtlUniqueIdCounterProp] = globalObject[JSUtlUniqueIdCounterProp] || 0;
+  globalObject[JSUtlUniqueIdCounterProp]++;
+  const uniqueIdCounter = globalObject[JSUtlUniqueIdCounterProp];
+  const uniqueId = (uniqueIdPrefix || config.uniqueIdPrefix) + uniqueIdCounter;
+  return uniqueId;
+}
+/**
+ * Deep object extension implementation.
+ * Nothing is returned, but the destination object will be modified and merged with the source object
+ * so that properties of the source object which are objects will recursively merge with the corresponding
+ * destination property while the other properties with all the other types will replace the properties of the
+ * destination object.
+ * Note that this method should not be used for inheritance via the Prototypal Combination Inheritance pattern.
+ * Also, this method doesn't perform a deep object cloning, it just extends the destinationObject by adding properties
+ * it doesn't have in a deep way.
+ *
+ * @param {Object} destinationObject The destination object which will be modified and merged with the source object.
+ * @param {Object} sourceObject The source object which will be used to extend the destination object.
+ * @param {Object} [options] An object containing the options for the extension.
+ *                           The currently available options are:
+ *
+ *                               - extendsArrays (boolean: false): Whether or not to extend nested arrays too (defaults to false);
+ *
+ * @return {undefined}
+ */
+
+function deepObjectExtend(destinationObject, sourceObject, options = {}) {
+  for (const property in sourceObject) {
+    if (sourceObject[property] && isPlainObject(sourceObject[property])) {
+      destinationObject[property] = destinationObject[property] || {};
+      deepObjectExtend(destinationObject[property], sourceObject[property], options);
+    } else if (options.extendArrays && sourceObject[property] && isArray(sourceObject[property])) {
+      destinationObject[property] = destinationObject[property] || [];
+      deepObjectExtend(destinationObject[property], sourceObject[property], options);
+    } else {
+      destinationObject[property] = sourceObject[property];
+    }
+  }
+}
+/**
+ * Extends a destination object with the provided source objects.
+ *
+ * @param {Object} destinationObj The destination object.
+ * @param {...Object|Array} sourceObjects The source objects. If the last argument is an array containing one single truthy element,
+ *                                        it will be treated as an options parameter and its single first truthy element will be treated as object
+ *                                        containing the options for the extension.
+ *                                        The currently available options are:
+ *
+ *                                            - extendsArrays (boolean: false): Whether or not to extend nested arrays too (defaults to false);
+ *
+ * @return {Object} The destination object "destinationObj" given as parameter after extension.
+ */
+
+function extend(destinationObj, ...sourceObjects) {
+  let options = {};
+
+  if (sourceObjects.length) {
+    const last = sourceObjects.pop();
+
+    if (isArray(last) && last.length === 1 && isPlainObject(last[0])) {
+      options = last[0];
+    } else {
+      sourceObjects.push(last);
+    }
+  }
+
+  for (const sourceObject of sourceObjects) {
+    deepObjectExtend(destinationObj, sourceObject, options);
+  }
+
+  return destinationObj;
+}
+/**
+ * Tests whether a value is undefined or not.
+ *
+ * @param {*} value A value
+ * @return {boolean} True value is undefined, false otherwise.
+ */
+
+function isUndefined(value) {
+  return typeof value === "undefined";
+}
+/**
+ * Tests if a partial object is a subset of another object.
+ *
+ * @param {Object} obj An object.
+ * @param {Object} partialObj A partial object which may not have all the keys of "obj"
+ *                            or may even have different keys, or keys with different values.
+ * @return {boolean} False if "partialObj" has a key which is not in "obj",
+ *                   or has at least one key which is also in "obj" but with a different value
+ *                   (shallow comparison), true otherwise.
+ */
+
+function partialShallowEqual(obj, partialObj) {
+  return shallowEqual(Object.keys(partialObj).reduce((carry, key) => {
+    carry[key] = obj[key];
+    return carry;
+  }, {}), partialObj);
+}
+/**
+ * Returns a shallow object diff, returning an object with two keys "objA" and "objB",
+ * each containing an object with all the properties of one of the two objects which are not within
+ * the other object, respectively.
+ * If a property is on both objects but each object has a different value for that same property
+ * (using shallow equality comparison), the returned property will be set on both objects with their
+ * respective values.
+ *
+ * @param {Object} objA First object.
+ * @param {Object} objB Second object.
+ * @return {Object} An object containing the shallow diff, with two keys "objA" and "objB".
+ */
+
+function shallowObjectDiff(objA, objB) {
+  const diff = {
+    objA: {},
+    objB: {}
+  };
+
+  if (shallowEqual(objA, objB)) {
+    return diff;
+  }
+
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
+
+  for (let i = 0; i < keysA.length; i++) {
+    const prop = keysA[i];
+
+    if (!objectPropEqual(objA, objB, prop)) {
+      diff.objA[prop] = objA[prop];
+
+      if (hasOwnProperty.call(objB, prop)) {
+        diff.objB[prop] = objB[prop];
+      }
+    }
+  }
+
+  for (let i = 0; i < keysB.length; i++) {
+    const prop = keysB[i];
+
+    if (!objectPropEqual(objB, objA, prop)) {
+      diff.objB[prop] = objB[prop];
+
+      if (hasOwnProperty.call(objA, prop)) {
+        diff.objA[prop] = objA[prop];
+      }
+    }
+  }
+
+  return diff;
+}
+
+function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+/**
+ * @type {string}
+ */
+
+const JSUtlCurryPlaceholderProp = "JSUtlCurryPlaceholderPropRPecoyYmCYqZ2lE";
+/**
+ * Curry function placeholder.
+ *
+ * @type {Object}
+ */
+
+const _ = {
+  [JSUtlCurryPlaceholderProp]: true
+};
+/**
+ * @type {string}
+ */
+
+const JSUtlProceedCallingFnProp = "JSUtlProceedCallingFnPropRBmGaAgOCgftF9t";
+/**
+ * Return value of "onFnCall" to call the curried function and return its value.
+ *
+ * @type {Object}
+ */
+
+const proceedCallingFn = {
+  [JSUtlProceedCallingFnProp]: true
+};
+/**
+ * Curries a function.
+ *
+ * @see https://medium.com/@kj_huang/implementation-of-lodash-curry-function-8b1024d71e3b
+ *
+ * @param {Function} fn A function to curry in order to return the curried version of the function.
+ * @param {Object} [obj] An optional object with further properties to tweak the currying behaviour
+ *                       and execute code while collecting the arguments of the curried function.
+ * @param {number|undefined} [obj.arity] The arity of the function, i.e. its number of arguments.
+ *                                       If omitted, "fn.length" will be used.
+ * @param {Function|undefined} [obj.onEffectiveArgAdded] An optional callback to execute whenever a new effective argument
+ *                                                       (not a placeholder) is added to the curried function.
+ *                                                       The callback will receive an object with the following properties as argument:
+ *
+ *                                                           - addedArg: The effective argument added;
+ *                                                           - args: An array with all the previously arguments collected so far
+ *                                                                   without considering "addedArg";
+ *                                                           - fn: The function "fn";
+ *                                                           - curriedFn: The current curried function;
+ *
+ *                                                       The return value of the function is ignored.
+ * @param {Function|undefined} [obj.onPlaceholder] An optional callback to execute whenever a new placeholder is added to the curried function.
+ *                                                 The callback will receive an object with the following properties as argument:
+ *
+ *                                                     - args: An array with all the previously arguments collected so far
+ *                                                             without considering "addedArg";
+ *                                                     - fn: The function "fn";
+ *                                                     - curriedFn: The current curried function;
+ *
+ *                                                 The return value of the function is ignored.
+ * @param {Function|undefined} [obj.onFnCall] An optional callback to execute just before calling the "fn" function
+ *                                            (i.e. when the "fn" function is ready to be called and all its arguments have been collected).
+ *
+ *                                            The callback will receive an object with the following properties as argument:
+ *
+ *                                                - args: The array of the effective arguments of the "fn" function;
+ *                                                - fn: The function "fn" which was initially passed to "curry";
+ *                                                - curriedFn: The current curried function;
+ *
+ *                                            This way, the code of the callback may decide what to do and may even call the function on its own
+ *                                            and prevent the call from the caller side (i.e. within the "curry" function).
+ *
+ *                                            The callback must explicitly tell "curry" to call the function by returing "proceedCallingFn".
+ *                                            If the callback returns any other value, then "fn" will not be called in "curry" and the return value
+ *                                            of this callback will be returned.
+ * @param {Function|undefined} [obj.onCurriedFnFirstCall] An optional callback to execute only the first time when the first curried function returned by "curry"
+ *                                                        is invoked for the very first time with the very first argument or arguments.
+ *
+ *                                                        The callback will receive an object with the following properties as argument:
+ *
+ *                                                            - addedArgs: The arguments provided by the caller;
+ *                                                            - fn: The "fn" function;
+ *                                                            - curriedFn: The current curried function;
+ *
+ * @param {Function|undefined} [obj.onNewCurriedFn] An optional callback to execute initially and each time a new curried function is going to be returned.
+ *
+ *                                                  The callback will an object with the following properties as argument:
+ *
+ *                                                      - curriedFn: The current curried function (same as "newCurriedFn" when this callback is invoked
+ *                                                                   for the very first time);
+ *                                                      - newCurriedFn: The new curried function (will be the same as "curriedFn" when this callback is invoked
+ *                                                                      for the very first time);
+ *
+ *
+ * @return {Function} The curried version of the function.
+ */
+
+const curry = (fn, {
+  arity = void 0,
+  onEffectiveArgAdded = void 0,
+  onPlaceholder = void 0,
+  onFnCall = void 0,
+  onCurriedFnFirstCall = void 0,
+  onNewCurriedFn = void 0
+} = {}) => {
+  let curriedFnFirstCall = true;
+  const expectedNumberOfArgs = typeof arity !== "undefined" ? arity : fn.length;
+  const nextParameterIndex = 0;
+  const placeholdersIndices = [];
+
+  const curriedInner = (expectedNumberOfArgs, nextParameterIndex, placeholdersIndices, ...args) => function curriedFn(...addedArgs) {
+    let newExpectedNumberOfArgs = expectedNumberOfArgs;
+    let newNextParameterIndex = nextParameterIndex;
+    let newPlaceholdersIndices = null;
+    let argsRequiredChange = false;
+    curriedFnFirstCall && (onCurriedFnFirstCall && onCurriedFnFirstCall({
+      addedArgs,
+      fn,
+      curriedFn
+    }) || true) && (curriedFnFirstCall = false);
+    let numberOfConsumablePlaceholders = placeholdersIndices.length;
+
+    for (const addedArg of addedArgs) {
+      !argsRequiredChange && (args = [...args]);
+      argsRequiredChange = true; // "addedArg" may be either a placeholder or an effective argument.
+
+      const isPlaceholder = addedArg ? addedArg[JSUtlCurryPlaceholderProp] === _[JSUtlCurryPlaceholderProp] : false;
+
+      if (numberOfConsumablePlaceholders > 0 && !isPlaceholder) {
+        // Argument is an effective argument consuming a previously set placeholder.
+        onEffectiveArgAdded && onEffectiveArgAdded({
+          addedArg,
+          args,
+          fn,
+          curriedFn
+        });
+        let argIndex;
+
+        if (newPlaceholdersIndices === null) {
+          const [firstIndex, ...rest] = placeholdersIndices;
+          argIndex = firstIndex;
+          newPlaceholdersIndices = rest;
+        } else {
+          argIndex = newPlaceholdersIndices.shift();
+        }
+
+        args[argIndex] = addedArg;
+        numberOfConsumablePlaceholders--;
+        newExpectedNumberOfArgs--;
+      } else {
+        if (isPlaceholder) {
+          // Argument is a new placeholder.
+          if (newPlaceholdersIndices === null) {
+            newPlaceholdersIndices = placeholdersIndices.concat(newNextParameterIndex);
+          } else {
+            newPlaceholdersIndices.push(newNextParameterIndex);
+          }
+
+          onPlaceholder && onPlaceholder({
+            args,
+            fn,
+            curriedFn
+          });
+        } else {
+          // Argument is an effective argument.
+          newExpectedNumberOfArgs--;
+          onEffectiveArgAdded && onEffectiveArgAdded({
+            addedArg,
+            args,
+            fn,
+            curriedFn
+          });
+        }
+
+        args[newNextParameterIndex] = addedArg;
+        newNextParameterIndex++;
+      }
+    } // eslint-disable-next-line @typescript-eslint/no-use-before-define
+
+
+    return curried.call(null, curriedFn, newExpectedNumberOfArgs, newNextParameterIndex, newPlaceholdersIndices === null ? [...placeholdersIndices] : newPlaceholdersIndices, ...args);
+  };
+
+  const curried = (curriedFn, expectedNumberOfArgs, nextParameterIndex, placeholdersIndices, ...args) => {
+    if (expectedNumberOfArgs <= 0) {
+      if (onFnCall) {
+        const shouldCallCurriedFn = onFnCall({
+          args,
+          fn,
+          curriedFn
+        });
+
+        if (shouldCallCurriedFn && shouldCallCurriedFn[JSUtlProceedCallingFnProp] === proceedCallingFn[JSUtlProceedCallingFnProp]) {
+          return fn(...args);
+        } else {
+          return shouldCallCurriedFn;
+        }
+      } else {
+        return fn(...args);
+      }
+    } else {
+      const newCurried = curriedInner(expectedNumberOfArgs, nextParameterIndex, placeholdersIndices, ...args);
+      onNewCurriedFn && onNewCurriedFn({
+        curriedFn,
+        newCurriedFn: newCurried
+      });
+      return newCurried;
+    }
+  };
+
+  const newCurried = curriedInner(expectedNumberOfArgs, nextParameterIndex, placeholdersIndices);
+  onNewCurriedFn && onNewCurriedFn({
+    curriedFn: newCurried,
+    newCurriedFn: newCurried
+  });
+  return newCurried;
+};
+/**
+ * A utility function which composes functions or higher-order functions.
+ *
+ * @param {...Function|...Function[]} fns A list of functions or higher-order functions or arrays of functions
+ *                                        (arrays will be flattened) to compose.
+ * @return {Function} A function composed of all the functions or higher-order functions
+ *                    used for composition.
+ */
+
+const compose = (...fns) => (...args) => {
+  let outerArgs = args;
+  let hoFn = void 0;
+  fns = fns.flat(1);
+
+  for (let i = fns.length - 1; i >= 0; i--) {
+    const fn = fns[i];
+    hoFn = fn(...outerArgs);
+    outerArgs = [hoFn];
+  }
+
+  return hoFn;
+};
+/**
+ * Returns a function which lets picking the properties of an object.
+ *
+ * @param {...string|...number} props The properties to pick.
+ * @return {Function} A function which if called picks the "props" properties from its argument object
+ *                    and returns a new object with the picked properties.
+ */
+
+const pick = (...props) => o => props.reduce((a, e) => _objectSpread$4(_objectSpread$4({}, a), {}, {
+  [e]: o[e]
+}), {});
+
+/*
+ * Copyright (c) 2021 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Tests if a DOM element has a vertical scrollbar.
+ *
+ * @param {Element} elem The DOM element.
+ * @return {boolean} True it has a vertical scrollbar, false otherwise.
+ */
+
+function hasVerticalScrollbar(elem) {
+  const hasVerticalScrollbar = elem.scrollHeight > elem.clientHeight;
+  return hasVerticalScrollbar;
+}
+/**
+ * Tests if a DOM element has a horizontal scrollbar.
+ *
+ * @param {Element} elem The DOM element.
+ * @return {boolean} True it has a horizontal scrollbar, false otherwise.
+ */
+
+function hasHorizontalScrollbar(elem) {
+  const hasHorizontalScrollbar = elem.scrollWidth > elem.clientWidth;
+  return hasHorizontalScrollbar;
+}
+/**
+ * Detects wrapped elements.
+ *
+ * @param {string|Element[]} classNameOrElements A class name (with or without the leading dot) or the DOM elements to check.
+ * @return {Element[]} The wrapped DOM elements.
+ */
+
+function detectWrapped(classNameOrElements) {
+  let elements;
+
+  if (typeof classNameOrElements === "string") {
+    classNameOrElements = classNameOrElements.replace(/^\./, "");
+    elements = document.getElementsByClassName(classNameOrElements);
+  } else {
+    elements = classNameOrElements;
+  }
+
+  const wrapped = [];
+  let prev = {};
+  let curr = {};
+
+  for (let i = 0; i < elements.length; i++) {
+    const element = elements[i];
+    curr = element.getBoundingClientRect();
+
+    if (prev && prev.top < curr.top) {
+      wrapped.push(element);
+    }
+
+    prev = i === 0 ? curr : prev;
+  }
+
+  return wrapped;
+}
+
+/*
+ * Copyright (c) 2021 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Generates a random string.
+ *
+ * @return {string} A random string.
+ */
+
+const randomString = () => Math.random().toString(36).substr(2);
+
+/*
+ * Copyright (c) 2021 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Escapes special characters for a JS regex.
+ *
+ * @see https://stackoverflow.com/questions/3115150/how-to-escape-regular-expression-special-characters-using-javascript#answer-9310752
+ *
+ * @param {string} text The string to escape.
+ * @return {string} The same string with special regex characters escaped.
+ */
+
+function escapeRegExp(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
+/**
+ * Trim characters from the beginning and end of a string.
+ *
+ * @param {string} str The string.
+ * @param {string} characterMask Character mask.
+ * @param {Object} options Options.
+ * @param {Object.boolean} options.shouldTrimLeft "true" to trim left (defaults to "true" if omitted).
+ * @param {Object.boolean} options.shouldTrimRight "true" to trim right (defaults to "true" if omitted).
+ * @return {string} The trimmed string.
+ */
+
+function trimCharacterMask(str, characterMask, options = {}) {
+  if (typeof characterMask === "undefined") {
+    characterMask = " ";
+  }
+
+  const escapedCharacterMask = escapeRegExp(characterMask);
+  const shouldTrimLeft = typeof options.shouldTrimLeft === "undefined" || options.shouldTrimLeft;
+  const shouldTrimRight = typeof options.shouldTrimRight === "undefined" || options.shouldTrimRight;
+  const regexParts = [];
+
+  if (shouldTrimLeft) {
+    regexParts[regexParts.length] = "^[" + escapedCharacterMask + "]+";
+  }
+
+  if (shouldTrimRight) {
+    regexParts[regexParts.length] = "[" + escapedCharacterMask + "]+$";
+  }
+
+  const regex = new RegExp(regexParts.join("|"), "gm");
+  return str.replace(regex, "");
+}
+/**
+ * Alias of "trimCharacterMask".
+ * Trim characters from the beginning and end of a string.
+ *
+ * @param {string} str The string.
+ * @param {string} characterMask Character mask.
+ * @return {string} The trimmed string.
+ */
+
+function trim(str, characterMask) {
+  return trimCharacterMask(str, characterMask);
+}
+/**
+ * Trim characters from the end of a string.
+ *
+ * @param {string} str The string.
+ * @param {string} characterMask Character mask.
+ * @return {string} The right-trimmed string.
+ */
+
+function trimRight(str, characterMask) {
+  return trimCharacterMask(str, characterMask, {
+    shouldTrimLeft: false,
+    shouldTrimRight: true
+  });
+}
+
+/*
+ * Copyright (c) 2021 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Debounces a function.
+ *
+ * @param {Function} fn A function.
+ * @param {number} wait Wait interval in milliseconds.
+ * @return {Function} A new function, debounced.
+ */
+
+function debounce(fn, wait) {
+  let timer = void 0;
+  return function (...args) {
+    !isUndefined(timer) && clearTimeout(timer);
+    timer = setTimeout(function () {
+      fn(...args);
+    }, wait);
+  };
+}
+/**
+ * Throttles a function.
+ *
+ * @see https://www.sitepoint.com/throttle-scroll-events/
+ *
+ * @param {Function} fn A function.
+ * @param {number} wait Wait interval in milliseconds.
+ * @return {Function} A new function, throttled.
+ */
+
+function throttle(fn, wait) {
+  let time = Date.now();
+  return function (...args) {
+    if (time + wait - Date.now() < 0) {
+      fn(...args);
+      time = Date.now();
+    }
+  };
+}
+
+var _excluded = ["className"],
+    _excluded2 = ["Component", "Parent"],
+    _excluded3 = ["Component", "Parent"];
+
+function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty$1(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+/**
+ * React JS utility functions.
+ */
+
+/**
+ * Returns a class name string.
+ *
+ * @param {*} componentClassName Default class name of a component (a string) or a falsy value which evaluates to an empty string.
+ * @param {...*} classNames Additional, optional list of strings of class names or falsy values to ignore.
+ * @return {string} The class name string.
+ */
+
+function classNames(componentClassName) {
+  for (var _len = arguments.length, classNames = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    classNames[_key - 1] = arguments[_key];
+  }
+
+  return classNames.reduce(function (componentClassName, className) {
+    return trim("".concat(componentClassName || "", " ").concat(className || ""));
+  }, componentClassName);
+}
+/**
+ * Merges a component's class name.
+ *
+ * @deprecated since version 1.17.0 (will be removed in a next major version, use "classNames()" instead)
+ *
+ * @param {string} componentClassName Component's class name.
+ * @param {Object} props Properties.
+ * @return {Object} The merged properties.
+ */
+
+function mergeClassNameProp(componentClassName, props) {
+  var className = props.className,
+      remaining = _objectWithoutProperties(props, _excluded);
+
+  return _objectSpread$3({
+    className: classNames(componentClassName, className)
+  }, remaining);
+}
+/**
+ * Returns the name of a React component.
+ *
+ * @param {Object} reactComponentInstance An instance of a React component.
+ * @return {string|undefined} The React component's name, or "undefined" if the name is unknown.
+ */
+
+function reactComponentName(reactComponentInstance) {
+  return reactComponentInstance.constructor.displayName || reactComponentInstance.constructor.name || void 0;
+}
+/**
+ * Gets a React component's display name.
+ *
+ * @param {Function} Component A component.
+ * @return {string} Its name or "Component" if unknown.
+ */
+
+function getDisplayName(Component) {
+  return Component.displayName || Component.name || _typeof(Component) === "object" && getDisplayName(Component.type) || "Component";
+}
+/**
+ * Returns an array of mappable children if the given children
+ * parameter is not falsy.
+ *
+ * @private
+ *
+ * @param {*} children The given children.
+ * @param {(children: Array) => Array} fn A callback to map children returning the mapped children
+ *                                        if the given "children" is not falsy.
+ */
+
+var childrenMap = function childrenMap(children, fn) {
+  if (!isArray(children)) {
+    if (!children) {
+      return children;
+    }
+
+    children = [children];
+  }
+
+  return fn(children);
+};
+/**
+ * Map React children like "React.Children.map()", but without changing children keys.
+ *
+ * @param {*} children React children (usually the value of "props.children").
+ * @param {Function} fn Function to call which will receive each child and its corresponding index as argument.
+ * @return {Array} An array of mapped children.
+ */
+
+
+var reactChildrenMap = function reactChildrenMap(children, fn) {
+  return childrenMap(children, function (children) {
+    return children.map(fn);
+  });
+};
+/**
+ * Map React children like "reactChildrenMap", but flattening the given children before mapping.
+ *
+ * @param {*} children React children (usually the value of "props.children").
+ * @param {Function} fn Function to call which will receive each child and its corresponding index as argument.
+ * @param {number} [depth] The depth of the flattening. Defaults to 1.
+ * @return {Array} An array of mapped children.
+ */
+
+var reactChildrenFlatMap = function reactChildrenFlatMap(children, fn) {
+  var depth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+  return childrenMap(children, function (children) {
+    return children.flat(depth).map(fn);
+  });
+};
+/**
+ * Returns a key/child tuple function.
+ *
+ * @private
+ *
+ * @param {Function} fn Function to call which will receive two parameters:
+ *
+ *                          - key: The current key;
+ *                          - child: The current child;
+ *
+ * @return {(current: *) => *} A function returning the mapped child.
+ */
+
+var childrenKeyChildTupleFn = function childrenKeyChildTupleFn(fn) {
+  return function (current) {
+    var key, child;
+
+    if (isArray(current)) {
+      var _current = _slicedToArray(current, 2);
+
+      key = _current[0];
+      child = _current[1];
+    } else {
+      child = current;
+      key = child.key;
+    }
+
+    return fn(key, child);
+  };
+};
+/**
+ * Map React children like "React.Children.map()", but without changing children keys
+ * as well as accepting a "[key, child]" tuple as a child and passing the current key and child
+ * parameter to the provided callback function.
+ *
+ * @param {*} children React children (usually the value of "props.children").
+ * @param {Function} fn Function to call which will receive two parameters:
+ *
+ *                          - key: The current key;
+ *                          - child: The current child;
+ *
+ * @return {Array} An array of mapped children.
+ */
+
+
+var reactChildrenKeyChildTupleMap = function reactChildrenKeyChildTupleMap(children, fn) {
+  return reactChildrenMap(children, childrenKeyChildTupleFn(fn));
+};
+/**
+ * Map React children like "reactChildrenKeyChildTupleMap", but flattening the given children before mapping.
+ *
+ * @param {*} children React children (usually the value of "props.children").
+ * @param {Function} fn Function to call which will receive two parameters:
+ *
+ *                          - key: The current key;
+ *                          - child: The current child;
+ *
+ * @return {Array} An array of mapped children.
+ */
+
+var reactChildrenKeyChildTupleFlatMap = function reactChildrenKeyChildTupleFlatMap(children, fn) {
+  return reactChildrenFlatMap(children, childrenKeyChildTupleFn(fn));
+};
+/**
+ * Generates a new ref callback.
+ *
+ * @param {Object} ref A ref object.
+ * @param {*} ref.current The mutable value of the ref.
+ * @param {string} prop A property to pick from the value passed to the ref callback.
+ * @return {Function} The new ref callback.
+ */
+
+var refCallback = function refCallback(ref) {
+  var prop = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : void 0;
+  return function (value) {
+    return ref.current = prop ? value ? value[prop] : null : value;
+  };
+};
+/**
+ * Tests if the given value has a React component name property
+ * (either a "name" or a "displayName" string property with the first character
+ * being a capital letter).
+ *
+ * @param {*} fn A value.
+ * @return {boolean} True if the given value has a valid React component name,
+ *                   false otherwise.
+ */
+
+var isWithReactComponentName = function isWithReactComponentName(fn) {
+  return !!(fn && (!isEmpty(fn.name) && fn.name[0] === fn.name[0].toUpperCase() || !isEmpty(fn.displayName) && fn.displayName[0] === fn.displayName[0].toUpperCase()));
+};
+/**
+ * Tests if the given value is a function with a valid React component name.
+ *
+ * @param {*} fn A value.
+ * @return {boolean} True if the given value is a function with a valid React component name,
+ *                   false otherwise.
+ */
+
+var isFnWithComponentName = function isFnWithComponentName(fn) {
+  return typeof fn === "function" && isWithReactComponentName(fn);
+};
+/**
+ * Tests if a value is a React builtin HOC (e.g. a component returned by "React.memo()").
+ *
+ * @param {*} Component The value.
+ * @return {boolean} True if the given value is a React HOC.
+ */
+
+var isReactHOC = function isReactHOC(Component) {
+  return _typeof(Component) === "object" && (Object.prototype.hasOwnProperty.call(Component, "$$typeof") && [_typeof(Symbol("")), _typeof("")].indexOf(_typeof(Component.$$typeof)) > -1 || isWithReactComponentName(Component) || isReactComponent(Component.type));
+};
+/**
+ * Private helper for composing behaviour when testing possible React components.
+ *
+ * @private
+ */
+
+var withAncestorHasComponentName = function withAncestorHasComponentName() {
+  var ancestorHasComponentName = false;
+  return function (fn) {
+    return function (_ref) {
+      var Component = _ref.Component,
+          _ref$Parent = _ref.Parent,
+          Parent = _ref$Parent === void 0 ? void 0 : _ref$Parent,
+          props = _objectWithoutProperties(_ref, _excluded2);
+
+      ancestorHasComponentName = ancestorHasComponentName || isWithReactComponentName(Parent);
+      return fn(_objectSpread$3(_objectSpread$3({}, props), {}, {
+        Component: Component,
+        ancestorHasComponentName: ancestorHasComponentName
+      }));
+    };
+  };
+};
+/**
+ * Private helper for composing behaviour when testing possible React components.
+ *
+ * @private
+ */
+
+
+var withAncestorIsBuiltinReactHOC = function withAncestorIsBuiltinReactHOC() {
+  var ancestorIsBuiltinReactHOC = false;
+  return function (fn) {
+    return function (_ref2) {
+      var Component = _ref2.Component,
+          _ref2$Parent = _ref2.Parent,
+          Parent = _ref2$Parent === void 0 ? void 0 : _ref2$Parent,
+          props = _objectWithoutProperties(_ref2, _excluded3);
+
+      ancestorIsBuiltinReactHOC = ancestorIsBuiltinReactHOC || isReactHOC(Parent);
+      return fn(_objectSpread$3(_objectSpread$3({}, props), {}, {
+        Component: Component,
+        ancestorIsBuiltinReactHOC: ancestorIsBuiltinReactHOC
+      }));
+    };
+  };
+};
+/**
+ * Composed behaviours when testing ancestors.
+ *
+ * @private
+ *
+ * @param {(props: Object) => boolean} fn
+ */
+
+
+var withComposedAncestorTests = function withComposedAncestorTests(fn) {
+  return compose(withAncestorIsBuiltinReactHOC(), withAncestorHasComponentName())(fn);
+};
+/**
+ * Tests if the given value is a valid React functional component.
+ *
+ * @param {*} Component The value.
+ * @return {boolean} True if the value is a React functional component, false otherwise.
+ */
+
+
+function isFunctionalComponent(Component) {
+  var testComponent = withComposedAncestorTests(function (_ref3) {
+    var Component = _ref3.Component,
+        ancestorHasComponentName = _ref3.ancestorHasComponentName,
+        ancestorIsBuiltinReactHOC = _ref3.ancestorIsBuiltinReactHOC;
+
+    if (!(Component.prototype && Component.prototype.isReactComponent) && (isFnWithComponentName(Component) || typeof Component === "function" && (ancestorHasComponentName || ancestorIsBuiltinReactHOC))) {
+      return true;
+    } else if (isReactHOC(Component)) {
+      return testComponent({
+        Component: Component.type,
+        Parent: Component
+      });
+    }
+
+    return false;
+  });
+  return testComponent({
+    Component: Component
+  });
+}
+/**
+ * Tests if the given value is a valid React class component.
+ *
+ * @param {*} Component The value.
+ * @return {boolean} True if the value is a React class component, false otherwise.
+ */
+
+function isClassComponent(Component) {
+  var testComponent = withComposedAncestorTests(function (_ref4) {
+    var Component = _ref4.Component,
+        ancestorHasComponentName = _ref4.ancestorHasComponentName,
+        ancestorIsBuiltinReactHOC = _ref4.ancestorIsBuiltinReactHOC;
+    return !!(Component.prototype && Component.prototype.isReactComponent && (ancestorHasComponentName || ancestorIsBuiltinReactHOC || isFnWithComponentName(Component))) || isReactHOC(Component) && isClassComponent(Component.type);
+  });
+  return testComponent({
+    Component: Component
+  });
+}
+/**
+ * Tests if the given value is a valid React component.
+ *
+ * @param {*} value A value.
+ * @return {boolean} True if the given value is a valid React component, false otherwise.
+ */
+
+function isReactComponent(Component) {
+  return isFunctionalComponent(Component) || isClassComponent(Component) || isReactHOC(Component);
+}
+/**
+ * Returns a default value.
+ *
+ * @param {*} [defaultValue] A default value.
+ * @param {*} [valueIfDefaultValueIsUndefined] A value to return if the given default value is "undefined".
+ * @return {*} A default value.
+ */
+
+function defaultVal() {
+  var defaultValue = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : void 0;
+  var valueIfDefaultValueIsUndefined = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : void 0;
+
+  if (defaultValue) {
+    return defaultValue;
+  }
+
+  if (isUndefined(defaultValue)) {
+    return valueIfDefaultValueIsUndefined;
+  } else {
+    return !defaultValue ? void 0 : defaultValue;
+  }
+}
+/**
+ * Checks whether the given value is a controlled value or not.
+ * If the value is a controlled value, it can be used in a controlled component.abs
+ *
+ * @see https://stackoverflow.com/questions/37427508/react-changing-an-uncontrolled-input#answer-37427596
+ * @see https://github.com/facebook/react/blob/master/packages/react-dom/src/client/ReactDOMInput.js#L40
+ *
+ * @param {*} value The given value.
+ * @return {boolean} True if the given value is a controlled value, i.e. it can be used in a controlled component,
+ *                   false otherwise.
+ */
+
+function isControlledValue(value) {
+  return value != null;
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+var index$2 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	classNames: classNames,
+	mergeClassNameProp: mergeClassNameProp,
+	reactComponentName: reactComponentName,
+	getDisplayName: getDisplayName,
+	reactChildrenMap: reactChildrenMap,
+	reactChildrenFlatMap: reactChildrenFlatMap,
+	reactChildrenKeyChildTupleMap: reactChildrenKeyChildTupleMap,
+	reactChildrenKeyChildTupleFlatMap: reactChildrenKeyChildTupleFlatMap,
+	refCallback: refCallback,
+	isFnWithComponentName: isFnWithComponentName,
+	isWithReactComponentName: isWithReactComponentName,
+	isFunctionalComponent: isFunctionalComponent,
+	isClassComponent: isClassComponent,
+	isReactComponent: isReactComponent,
+	isReactHOC: isReactHOC,
+	defaultVal: defaultVal,
+	isControlledValue: isControlledValue
+});
+
+/*
+ * Copyright (c) 2021 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/**
+ * @type {WeakMap}
+ */
+const privateScope = new WeakMap();
+class DefPromise extends Promise {
+  constructor(executor = () => {}) {
+    let resolve, reject;
+    let isSettled = false,
+        hasResolved = false,
+        hasRejected = false;
+    super((resolveFunc, rejectFunc) => {
+      resolve = (...args) => {
+        if (!isSettled) {
+          isSettled = true;
+          hasResolved = true;
+        }
+
+        resolveFunc(...args);
+      };
+
+      reject = (...args) => {
+        if (!isSettled) {
+          isSettled = true;
+          hasRejected = true;
+        }
+
+        rejectFunc(...args);
+      };
+
+      executor(resolve, reject);
+    });
+    const priv = {
+      resolve,
+      reject,
+      isSettled: () => isSettled,
+      hasResolved: () => hasResolved,
+      hasRejected: () => hasRejected
+    };
+    privateScope.set(this, priv);
+  }
+
+  resolve(...args) {
+    return privateScope.get(this).resolve(...args);
+  }
+
+  reject(...args) {
+    return privateScope.get(this).reject(...args);
+  }
+
+  isSettled() {
+    return privateScope.get(this).isSettled();
+  }
+
+  hasResolved() {
+    return privateScope.get(this).hasResolved();
+  }
+
+  hasRejected() {
+    return privateScope.get(this).hasRejected();
+  }
+
+}
+
+var LQueue = function(){
+  this.head = null;
+  this.tail = null;
+  this.length = 0;
+};
+
+LQueue.prototype.enqueue = function(data){
+  var tmp = new Node(data);
+  tmp.data = data;
+  tmp.next = null;
+  this.length ++;
+  if(this.head == null){
+    this.tail = this.head = tmp;
+    return;
+  }
+  this.tail.next = tmp;
+  this.tail = this.tail.next;
+};
+
+LQueue.prototype.enqueueAll = function(list){
+  for(var i =0;i < list.length;i++){
+    this.enqueue(list[i]);
+  }
+};
+
+LQueue.prototype.dequeue = function(){
+  if(this.head == null){
+    return null;
+  }
+  this.length --;
+  var data = this.head.data;
+  var tmp = this.head;
+  this.head = this.head.next;
+  if(this.head == null){
+    this.tail = null;
+  }
+  tmp.next  = null;
+  return data;
+
+};
+
+LQueue.prototype.dequeueAll = function(fn){
+  while(this.head != null){
+    fn(this.dequeue());
+  }
+};
+
+LQueue.prototype.first = function(){
+  if(this.head != null){
+    return this.head.data
+  }
+  return null;
+};
+
+LQueue.prototype.last = function(){
+  if(this.tail != null){
+    return this.tail.data
+  }
+  return null;
+};
+
+LQueue.prototype.isEmpty = function(){
+  return this.length ===0;
+};
+
+LQueue.prototype.clear = function(data){
+  if(this.head == null) return;
+  var tmp = null;
+  while(this.head != null){
+      tmp=this.head;
+      this.head = this.head.next;
+      tmp.next = null;
+      this.length --;
+  }
+  this.tail = null;
+};
+LQueue.prototype.forEach = function(fn){
+  var tmp = this.head;
+  while(tmp != null){
+    fn(tmp.data);
+    tmp = tmp.next;
+  }
+};
+
+var Node = function(data){
+  this.data = data;
+  this.next = null;
+};
+var linkedQueue = LQueue;
+
+function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { _defineProperty$1(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+/**
+ * Hook to use a POJO state which merges values of the previous state with the next one
+ * if the partial state update of the next state is not the same as the previous state
+ * for the same keys.
+ *
+ * @param {Object|Function} initialState The initial state, either a POJO (Plain Old JavaScript Object)
+ *                                       or a function returning a POJO (lazy initial state).
+ * @return {Array} A tuple of two values, current state POJO and callback to set state,
+ *                 like the one returned by the "useState" hook.
+ *
+ *                 The callback to set state may receive an updater function which will receive
+ *                 the previous POJO state as argument and must return the next partial POJO state
+ *                 update or "null" (to bail out of the state update, read below).
+ *
+ *                 If the updater function returns "null" or a partial POJO state update which
+ *                 has the same values for the same keys as the current POJO state, the update will be
+ *                 bailed out as for the "useState" hook.
+ */
+
+function usePOJOState(initialState) {
+  var _useState = React.useState(initialState),
+      _useState2 = _slicedToArray(_useState, 2),
+      state = _useState2[0],
+      setState = _useState2[1];
+
+  var setPOJOState = React.useMemo(function () {
+    return function (nextState) {
+      return setState(function (prevState) {
+        var newState = typeof nextState === "function" ? nextState(prevState) : nextState;
+
+        if (newState === null) {
+          return prevState;
+        } else {
+          return partialShallowEqual(prevState, newState) ? prevState : _objectSpread$2(_objectSpread$2({}, prevState), newState);
+        }
+      });
+    };
+  }, []);
+  return [state, setPOJOState];
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to use the previous given value if the currently given value is shallowly equal to the previous one.
+ *
+ * @param {*} value A value.
+ * @return {*} The given value the very first time or the previous value if the given
+ *             value is shallowly equal to the previous given value.
+ */
+
+function useShallowEqualMemo(value) {
+  var ref = React.useRef({
+    init: true,
+    value: value
+  });
+  var ret = React.useMemo(function () {
+    if (ref.current.init) {
+      ref.current.init = false;
+      ref.current.value = value;
+      return value;
+    }
+
+    if (shallowEqual(value, ref.current.value)) {
+      return ref.current.value;
+    } else {
+      ref.current.value = value;
+      return value;
+    }
+  }, [value]);
+  return ret;
+}
+
+/**
+ * Hook to create a ref initialized lazily during the initial render.
+ *
+ * @param {(() => *)|*} fn A function returning the initial value of the ref object's "current" property or any
+ *                         other value to use as-is if as the initial value of the ref object's "current" property.
+ * @return {Object} A ref object with its "current" property set to the value returned by the given "fn" function
+ *                  or to the value passed as parameter to this hook if the "fn" parameter is not a function.
+ */
+
+function useLazyRef(fn) {
+  var _useState = React.useState(fn),
+      _useState2 = _slicedToArray(_useState, 1),
+      initialValue = _useState2[0];
+
+  var ref = React.useRef(initialValue);
+  return ref;
+}
+
+/**
+ * @type {Function}
+ */
+
+var defaultOnStateUpdate = function defaultOnStateUpdate(_ref) {
+  var newState = _ref.newState;
+  return newState;
+};
+/**
+ * Return false by default, for non-POJO state, bail out only if the new state is the same as the previous state.
+ *
+ * @type {Function}
+ */
+
+
+var defaultOnHasBailedOut = function defaultOnHasBailedOut(_ref2) {
+  var prevState = _ref2.prevState,
+      newState = _ref2.newState;
+  return newState === prevState;
+};
+/**
+ * Hook used internally for all hooks allowing to set state with a `setState` callback
+ * (`useStateWithEffectCallback`, `useStateWithLayoutEffectCallback`, `usePOJOStateWithEffectCallback`, `usePOJOStateWithLayoutEffectCallback`).
+ *
+ * @type {Function}
+ */
+
+
+var useStateWithSetStateCallback = function useStateWithSetStateCallback(_ref3) {
+  var initialState = _ref3.initialState,
+      useEffect = _ref3.useEffect,
+      _ref3$onStateUpdate = _ref3.onStateUpdate,
+      onStateUpdate = _ref3$onStateUpdate === void 0 ? defaultOnStateUpdate : _ref3$onStateUpdate,
+      _ref3$onHasBailedOut = _ref3.onHasBailedOut,
+      onHasBailedOut = _ref3$onHasBailedOut === void 0 ? defaultOnHasBailedOut : _ref3$onHasBailedOut;
+  var counterRef = React.useRef([]);
+  var randomValueCallback = React.useCallback(function () {
+    counterRef.current++;
+    counterRef.current = counterRef.current % Number.MAX_SAFE_INTEGER;
+    return "".concat(randomString(), "@").concat(counterRef.current);
+  }, []);
+
+  var _usePOJOState = usePOJOState(function () {
+    return {
+      state: typeof initialState === "function" ? initialState.apply(void 0, arguments) : initialState,
+      rand: randomValueCallback()
+    };
+  }),
+      _usePOJOState2 = _slicedToArray(_usePOJOState, 2),
+      derivedState = _usePOJOState2[0],
+      setDerivedState = _usePOJOState2[1];
+
+  var state = useShallowEqualMemo(derivedState.state);
+  var callbacksQueueRef = useLazyRef(function () {
+    return new linkedQueue();
+  });
+  useEffect(function () {
+    var len = callbacksQueueRef.current.length;
+
+    for (var i = 0; i < len; i++) {
+      var callback = callbacksQueueRef.current.dequeue();
+      callback(state);
+    }
+  }, [derivedState.rand, state, callbacksQueueRef]);
+  var setStateWithCallback = React.useCallback(function (newStateUpdate) {
+    var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : void 0;
+
+    var stateUpdate = function stateUpdate(derivedState) {
+      var update = null;
+      var prevState = derivedState.state;
+      var newState;
+
+      if (typeof newStateUpdate === "function") {
+        for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+          args[_key - 1] = arguments[_key];
+        }
+
+        newState = newStateUpdate.apply(void 0, [prevState].concat(args));
+      } else {
+        newState = newStateUpdate;
+      }
+
+      var hasBailedOut = onHasBailedOut({
+        prevState: prevState,
+        newState: newState
+      });
+      var hasCallback = !isUndefined(callback);
+
+      if (hasBailedOut) {
+        if (hasCallback) {
+          // State update has bailed out, but there is a "setState" callback to execute.
+          // Execute the callback right away with the previous state.
+          callback(prevState);
+        }
+      } else {
+        update = {
+          state: onStateUpdate({
+            prevState: prevState,
+            newState: newState
+          })
+        };
+
+        if (hasCallback) {
+          // There is a state update and a "setState" callback to execute.
+          // Enqueue the callback to execute it later with the updated state in the effect when the state has been updated.
+          callbacksQueueRef.current.enqueue(callback);
+          update.rand = randomValueCallback();
+        }
+      }
+
+      return update;
+    };
+
+    return setDerivedState(stateUpdate);
+  }, [setDerivedState, randomValueCallback, callbacksQueueRef, onStateUpdate, onHasBailedOut]);
+  return [state, setStateWithCallback];
+};
+/**
+ * Hook to use a state with a `setState` function receiving a callback as its second parameter
+ * called in an effect after the state change is performed.
+ *
+ * @param {*|Function} initialState The initial state or a lazy callback returning the initial state.
+ * @return {Array} A tuple of two values, current state and callback to set state,
+ *                 like the one returned by the "useState" hook.
+ *
+ *                 The callback to set state may receive an updater function which will receive
+ *                 the previous state as argument and must return the next state.
+ *
+ *                 The callback to set state may also receive a callback as its second parameter,
+ *                 which is called in an effect after the state change is performed.
+ */
+
+function useStateWithEffectCallback(initialState) {
+  return useStateWithSetStateCallback({
+    initialState: initialState,
+    useState: React.useState,
+    useEffect: React.useEffect
+  });
+}
+
+/**
+ * Hook used internally for all hooks allowing to set state and await for the state change.
+ * (`useAwaitableStateWithEffect`, `useAwaitableStateWithLayoutEffect`, `useAwaitablePOJOStateWithEffect`, `useAwaitablePOJOStateWithEffect`).
+ *
+ * @type {Function}
+ */
+
+var useAwaitableState = function useAwaitableState(_ref) {
+  var initialState = _ref.initialState,
+      useStateWithSetStateCallback = _ref.useStateWithSetStateCallback;
+
+  var _useStateWithSetState = useStateWithSetStateCallback(initialState),
+      _useStateWithSetState2 = _slicedToArray(_useStateWithSetState, 2),
+      state = _useStateWithSetState2[0],
+      setState = _useStateWithSetState2[1];
+
+  var setStateCallback = React.useCallback(function (newState) {
+    var defPromise = new DefPromise();
+    setState(newState, function () {
+      defPromise.resolve.apply(defPromise, arguments);
+    });
+    return defPromise;
+  }, [setState]);
+  return [state, setStateCallback];
+};
+/**
+ * Hook to use a state with a `setState` function which can be awaited until the state change is performed
+ * and the underlying effect (`useEffect`) is executed.
+ *
+ * @param {*|Function} initialState The initial state or a lazy callback returning the initial state.
+ * @return {Array} A tuple of two values, current state and callback to set state,
+ *                 like the one returned by the "useState" hook.
+ *
+ *                 The callback to set state may be awaited until the state change is performed
+ *                 and the underlying effect (`useEffect`) is executed.
+ */
+
+function useAwaitableStateWithEffect(initialState) {
+  return useAwaitableState({
+    initialState: initialState,
+    useStateWithSetStateCallback: useStateWithEffectCallback
+  });
+}
+
+function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { _defineProperty$1(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+/**
+ * @type {Function}
+ */
+
+var onStateUpdate = function onStateUpdate(_ref) {
+  var prevState = _ref.prevState,
+      newState = _ref.newState;
+  return _objectSpread$1(_objectSpread$1({}, prevState), newState);
+};
+/**
+ * For POJO state, bails out if the new state is null or partially shallowly equal to the previous state.
+ *
+ * @type {Function}
+ */
+
+var onHasBailedOut = function onHasBailedOut(_ref2) {
+  var prevState = _ref2.prevState,
+      newState = _ref2.newState;
+  return newState === null || partialShallowEqual(prevState, newState);
+};
+/**
+ * Hook to use a POJO state with a `setState` function receiving a callback as its second parameter
+ * called in an effect after the state change is performed.
+ *
+ * @param {*|Function} initialState The initial POJO state or a lazy callback returning the initial POJO state.
+ * @return {Array} A tuple of two values, current POJO state and callback to set the POJO state,
+ *                 like the one returned by the "usePOJOState" hook.
+ *
+ *                 The callback to set state may receive an updater function which will receive
+ *                 the previous state as argument and must return the next state.
+ *
+ *                 The callback to set state may also receive a callback as its second parameter,
+ *                 which is called in an effect after the state change is performed.
+ */
+
+function usePOJOStateWithEffectCallback(initialState) {
+  return useStateWithSetStateCallback({
+    initialState: initialState,
+    useState: usePOJOState,
+    useEffect: React.useEffect,
+    onStateUpdate: onStateUpdate,
+    onHasBailedOut: onHasBailedOut
+  });
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to use a POJO state with a `setState` function which can be awaited until the POJO state change is performed
+ * and the underlying effect (`useEffect`) is executed.
+ *
+ * @param {*|Function} initialState The initial POJO state or a lazy callback returning the initial POJO state.
+ * @return {Array} A tuple of two values, current POJO state and callback to set POJO state,
+ *                 like the one returned by the "usePOJOState" hook.
+ *
+ *                 The callback to set POJO state may be awaited until the POJO state change is performed
+ *                 and the underlying effect (`useEffect`) is executed.
+ */
+
+function useAwaitablePOJOStateWithEffect(initialState) {
+  return useAwaitableState({
+    initialState: initialState,
+    useStateWithSetStateCallback: usePOJOStateWithEffectCallback
+  });
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to use the previous value of a value.
+ *
+ * @param {*} value The new value.
+ * @return {*} The previous value, or, initially, "undefined".
+ */
+
+function usePrevious(value) {
+  var ref = React.useRef(void 0);
+  React.useEffect(function () {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
+var arrayWithoutHoles = createCommonjsModule(function (module) {
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return arrayLikeToArray(arr);
+}
+
+module.exports = _arrayWithoutHoles;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+unwrapExports(arrayWithoutHoles);
+
+var iterableToArray = createCommonjsModule(function (module) {
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+
+module.exports = _iterableToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+unwrapExports(iterableToArray);
+
+var nonIterableSpread = createCommonjsModule(function (module) {
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableSpread;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+unwrapExports(nonIterableSpread);
+
+var toConsumableArray = createCommonjsModule(function (module) {
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
+}
+
+module.exports = _toConsumableArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+});
+
+var _toConsumableArray = unwrapExports(toConsumableArray);
+
+/**
+ * Hook to execute a callback each time a component updates
+ * (not when it mounts on the initial render).
+ *
+ * @param {Function} fn The callback to execute.
+ * @param {Array|undefined} [deps] Dependencies array to use.
+ * @return {undefined}
+ */
+
+function useUpdateEffect(fn) {
+  var deps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : void 0;
+  var isInitialRenderRef = React.useRef(true);
+
+  if (isArray(deps)) {
+    // This is needed so that the update effect is triggered on the first update
+    // even if the deps array didn't change.
+    if (deps.length) {
+      if (isInitialRenderRef.current) {
+        deps = _toConsumableArray(deps);
+        var shouldBreak = false;
+
+        while (true) {
+          var rand = Math.random();
+
+          for (var i = 0; i < deps.length; i++) {
+            var value = deps[i];
+
+            if (rand !== value) {
+              shouldBreak = true;
+              break;
+            }
+
+            deps[i] = rand + 1;
+          }
+
+          if (shouldBreak) {
+            break;
+          }
+        }
+      }
+    } else {
+      if (isInitialRenderRef.current) {
+        deps = [0];
+      } else {
+        deps = [1];
+      }
+    }
+  }
+
+  React.useEffect(function () {
+    if (isInitialRenderRef.current) {
+      isInitialRenderRef.current = false;
+      return;
+    }
+
+    return fn(); // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to execute a callback on mount.
+ *
+ * @param {Function} fn The callback to execute.
+ * @return {undefined}
+ */
+
+function useMountEffect(fn) {
+  React.useEffect(fn, []);
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Returns a ref for a callback.
+ *
+ * Useful e.g. when using callbacks within a callback of "useEffect" hook
+ * which should not interfere with the deps array of the hook and yet having
+ * a reference to the up-to-date callback within the "useEffect" hook's callback
+ * through the "current" property.
+ *
+ * @see https://github.com/donavon/use-event-listener/issues/27
+ *
+ * @param {Function} callback A callback.
+ * @return {Object} A ref for the given callback.
+ *                  The returned ref could and should be passed as a dep to the dependencies array
+ *                  of a hook using it because React guarantees that the returned object will persist
+ *                  for the full lifetime of the component.
+ * @return {Object.current} The up-to-date callback.
+ */
+
+function useCallbackRef(callback) {
+  var callbackRef = React.useRef(callback);
+  React.useEffect(function () {
+    callbackRef.current = callback;
+  }, [callback]);
+  return callbackRef;
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to execute a callback on unmount.
+ *
+ * @param {Function} fn The callback to execute.
+ * @return {undefined}
+ */
+
+function useUnmountEffect(fn) {
+  var fnRef = useCallbackRef(fn);
+  React.useEffect(function () {
+    return function () {
+      return fnRef.current();
+    };
+  }, [fnRef]);
+}
+
+/**
+ * Hook exposing an imperative callback which, if called, forces a component to update.
+ *
+ * @return {Function} A callback to call to force a component to update.
+ */
+
+function useForceUpdate() {
+  var _useState = React.useState(),
+      _useState2 = _slicedToArray(_useState, 2),
+      setState = _useState2[1];
+
+  var forceUpdate = React.useCallback(function () {
+    return setState({});
+  }, []);
+  return forceUpdate;
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook returning a HOF (higher-order function) which, when called
+ * with a given key, returns a memoized function for that same key
+ * which can be easily used e.g. in a loop without causing re-renders
+ * because of inline arrow functions.
+ *
+ * @param {Function} fn The function to memoize.
+ * @param {Array|undefined} deps Dependencies array for the function, or undefined.
+ * @return {Function} A higher-order function which, when called with a given key,
+ *                    returns the memoized function "fn" which, when called, will receive
+ *                    the key as the first parameter as well as the other parameters passed
+ *                    to the memoized function when calling it.
+ */
+
+function useHOFCallback(fn, deps) {
+  var callback = React.useCallback(fn, deps);
+  var ref = React.useRef({
+    map: new Map(),
+    callback: callback
+  });
+
+  if (callback !== ref.current.callback) {
+    ref.current.map.clear();
+    ref.current.callback = callback;
+  }
+
+  var HOFCallback = React.useCallback(function (key) {
+    var memoizedFn = ref.current.map.get(key);
+
+    if (!memoizedFn) {
+      memoizedFn = function memoizedFn() {
+        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+
+        return callback.apply(void 0, [key].concat(args));
+      };
+
+      ref.current.map.set(key, memoizedFn);
+    }
+
+    return memoizedFn;
+  }, [callback]);
+  return HOFCallback;
+}
+
+/**
+ * Hook to easily create interchangeable factories switching them
+ * in a declarative way based on the given runtime parameters.
+ *
+ * @param {Function} tuplesFn A function returning an array of tuples, each tuple being an array of two elements:
+ *
+ *                                - testCondition: A boolean value or a function returning a boolean value
+ *                                                 which, if "true", instructs this hook to return the "factory" factory
+ *                                                 bound to this "testCondition".
+ *                                                 Note that the first "factory" for which "testCondition" is truthy
+ *                                                 will be returned and further tuples will be ignored;
+ *
+ *                                - factory: Anything. The value to return if "testCondition" is a truthy value
+ *                                           or a function returning a truthy value.
+ *
+ *                            The last element of the returned tuples MAY not be a tuple array with two elements,
+ *                            and in such case it will be treated as the default factory value to return if none
+ *                            of the test conditions of the previous factories are satisfied.
+ *                            If the last tuple is not a default value and none of the test conditions of the previous
+ *                            factories are satisfied as well as for the factory of last tuple, then "undefined"
+ *                            will be returned by this hook.
+ * @param {Array|undefined} [deps] Dependencies array to use.
+ * @return {*} The first factory value for which the test is truthy or returns a truthy value, a default factory value,
+ *             or "undefined".
+ */
+
+function useFactory(tuplesFn) {
+  var deps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : void 0;
+  var tuples = React.useMemo(tuplesFn, deps || []); // "testConditionFn" is pure and does never change.
+
+  var testConditionFn = React.useCallback(function (testCondition) {
+    return Boolean(typeof testCondition === "function" ? testCondition() : testCondition);
+  }, []);
+  var factoryValue = React.useMemo(function () {
+    var i = 0; // Loop through all the tuples except the last one (handled after this loop).
+
+    for (; i < tuples.length - 1; i++) {
+      var tuple = tuples[i];
+
+      var _tuple = _slicedToArray(tuple, 2),
+          testCondition = _tuple[0],
+          _factoryValue = _tuple[1];
+
+      if (testConditionFn(testCondition)) {
+        // Test condition for factory value is satisfied.
+        return _factoryValue;
+      }
+    }
+
+    var lastTuple = tuples[i];
+
+    if (isArray(lastTuple) && lastTuple.length === 2) {
+      var _lastTuple = _slicedToArray(lastTuple, 2),
+          _testCondition = _lastTuple[0],
+          _factoryValue2 = _lastTuple[1];
+
+      if (testConditionFn(_testCondition)) {
+        // Test condition for last factory value is satisfied.
+        return _factoryValue2;
+      } // No default and no factory value satisfying a test condition.
+
+
+      return void 0;
+    } else {
+      // Default factory value.
+      return lastTuple;
+    }
+  }, [testConditionFn, tuples]);
+  return factoryValue;
+}
+
+/**
+ * Hook to extend an object with an array of source objects.
+ *
+ * @param {Object|Function} destination Destination object or a function returning a destination object.
+ * @param {Array} deps An array which defines the dependecies of the hook as well the source objects
+ *                     to use to extend the destination object.
+ *                     If the nth element of this array is an object, it will always be used as a source object
+ *                     when extending the destination object "destination", as well as used as a dep.
+ *                     If the nth element of this array is not an object, it will only be used as a dep.
+ * @param {Object} [extendOptions] The options for the extension.
+ *                                 See the "extend" function of the js-utl package (https://github.com/tonix-tuft/js-utl)
+ *                                 for the available options.
+ * @return {Object} The extended destination object.
+ */
+
+function useExtend(destination, deps) {
+  var extendOptions = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var obj = React.useMemo(typeof destination === "function" ? destination : function () {
+    return destination;
+  }, deps);
+  extendOptions = useShallowEqualMemo(extendOptions);
+
+  var extendFn = function extendFn() {
+    return extend.apply(void 0, [obj].concat(_toConsumableArray(deps.filter(isPlainObject)), [[extendOptions]]));
+  };
+
+  var finalObj = React.useMemo(extendFn, [].concat(_toConsumableArray(deps), [extendOptions]));
+  return finalObj;
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook generating a callback to easily loop through a data structure.
+ *
+ * @param {Array|ImmutableLinkedOrderedMap} dataStructure A data structure.
+ * @return {(fn: (value: *) => *) => Array} A function which receives a callback to loop through
+ *                                          the values of the data structure returning an array
+ *                                          with the mapped values.
+ */
+
+function useLoopCallback(dataStructure) {
+  var loopCallback = useFactory(function () {
+    return [[ImmutableLinkedOrderedMap__default["default"].isMap(dataStructure), function (fn) {
+      return dataStructure.map(fn);
+    }], function (fn) {
+      return dataStructure.map(fn);
+    }];
+  }, [dataStructure]);
+  return loopCallback;
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to get a ref to the global "window" object.
+ *
+ * @return {Object} A ref to the global "window" object, available through the "current" property.
+ */
+
+function useWindowRef() {
+  var ref = React.useRef(window);
+  return ref;
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to tell if the current rendering is due to an update or not.
+ *
+ * @return {boolean} True if the current rendering is due to an update, false otherwise.
+ */
+
+function useIsUpdate() {
+  return !!usePrevious(true);
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to use a cumulative shallow diff of a value.
+ *
+ * @param {*} value A value.
+ * @return {*} The given value, initially.
+ *
+ *             The previous value if the given value is equal to the previous one and both
+ *             are not objects.
+ *
+ *             If the previous value and the given value are both objects,
+ *             then this hook will only return an object containing the diff between the two
+ *             accumulating the new keys and their corresponding values.
+ *             In this last case, if the resulting object containing the diff is empty
+ *             (meaning there's no diff) or if the diff is shallowly equal
+ *             to the previous one, then the previous diff object will be returned
+ *             if a diff was performed at least once previously, otherwise the previous value
+ *             will be returned, meaning that there wasn't a diff before yet
+ *             (useful for the array of dependencies of other hooks like "useEffect" and "useMemo").
+ */
+
+function useCumulativeShallowDiff(value) {
+  var valueDiffRef = React.useRef({
+    value: value,
+    diff: {},
+    werePreviousAndCurrentObjectsDiffedAndThereWasADiff: false
+  });
+  var isUpdate = useIsUpdate();
+  value = React.useMemo(function () {
+    var previousValue = valueDiffRef.current.value;
+
+    if (!isUpdate) {
+      return previousValue;
+    }
+
+    if (isPlainObject(previousValue) && isPlainObject(value)) {
+      var previousDiff = valueDiffRef.current.diff;
+      var diff = shallowObjectDiff(previousValue, value);
+      var newDiff = diff.objB;
+
+      if (isObjectEmpty(newDiff) || shallowEqual(previousDiff, newDiff)) {
+        return valueDiffRef.current.werePreviousAndCurrentObjectsDiffedAndThereWasADiff ? previousDiff : previousValue;
+      } else {
+        valueDiffRef.current.werePreviousAndCurrentObjectsDiffedAndThereWasADiff = true;
+        valueDiffRef.current.value = extend({}, previousValue, newDiff);
+        valueDiffRef.current.diff = newDiff;
+        return newDiff;
+      }
+    } else {
+      valueDiffRef.current.werePreviousAndCurrentObjectsDiffedAndThereWasADiff = false;
+      valueDiffRef.current.diff = {};
+
+      if (shallowEqual(previousValue, value)) {
+        return previousValue;
+      }
+
+      valueDiffRef.current.value = value;
+      return value;
+    }
+  }, [isUpdate, value]);
+  return value;
+}
+
+/**
+ * @type {Object}
+ */
+
+var initialDimensions = {
+  width: void 0,
+  height: void 0
+};
+/**
+ * @type {string[]}
+ */
+
+var defaultDimensionProps = ["width", "height"];
+/**
+ * Hook to get the dimensions of a DOM element.
+ *
+ * @param {string|Element|Object} element A selector of a DOM element, a DOM element or a ref object.
+ * @param {string[]} dimensionProps Array of dimension props to track.
+ *                                  Defaults to ['width', 'height'], i.e. track both width and height.
+ * @return {Array|Object} The return value of this hook can be destructured as an array as well as an object.
+ *
+ *                        When destructuring it as an array, the array will have the dimensions object
+ *                        having "width" and "height" properties as its first element and a "forceSetDimensions"
+ *                        function as its second element which, if called, will force the recalculation
+ *                        of the width and height of the element.
+ *
+ *                        When destructuring an object, the object will have the "width" and "height" of the DOM element,
+ *                        as well as the "forceSetDimensions" function as properties.
+ *
+ *                        Initially, on first render, both "width" and "height" will be "undefined".
+ */
+
+function useElementSize(element) {
+  var dimensionProps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultDimensionProps;
+  dimensionProps = useCumulativeShallowDiff(dimensionProps);
+
+  var _usePOJOState = usePOJOState(function () {
+    return pick.apply(void 0, _toConsumableArray(dimensionProps))(initialDimensions);
+  }),
+      _usePOJOState2 = _slicedToArray(_usePOJOState, 2),
+      dimensions = _usePOJOState2[0],
+      setDimensions = _usePOJOState2[1];
+
+  var windowRef = useWindowRef();
+  var forceSetDimensions = React.useCallback(function () {
+    var finalElement = typeof element === "string" ? document.querySelector(element) : Object.prototype.hasOwnProperty.call(element, "current") ? element.current : element;
+
+    if (finalElement) {
+      var boundingClientRect = finalElement.getBoundingClientRect();
+
+      var _dimensions = pick.apply(void 0, _toConsumableArray(dimensionProps))(boundingClientRect);
+
+      setDimensions(_dimensions);
+    } else {
+      setDimensions(initialDimensions);
+    }
+  }, [element, setDimensions, dimensionProps]);
+  React.useLayoutEffect(function () {
+    var window = windowRef.current && windowRef.current.addEventListener("resize", forceSetDimensions);
+    forceSetDimensions();
+    return function () {
+      window && window.removeEventListener("resize", forceSetDimensions);
+    };
+  }, [windowRef, forceSetDimensions]);
+  var ret = [dimensions, forceSetDimensions];
+
+  for (var prop in dimensions) {
+    ret[prop] = dimensions[prop];
+  }
+
+  ret.forceSetDimensions = forceSetDimensions;
+  return ret;
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook like {@link useElementSize()}, but optimized for height only.
+ *
+ * @param {string|Element} element A selector of a DOM element or a DOM element.
+ * @return {Array|Object} The return value of this hook can be destructured as an array as well as an object
+ *                        and its the same as the return value of the "useElementSize()" hook,
+ *                        the only difference being that the dimension object will only have the "height" property.
+ *
+ */
+
+function useElementHeight(element) {
+  var dimensionProps = React.useMemo(function () {
+    return ["height"];
+  }, []);
+  return useElementSize(element, dimensionProps);
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook like {@link useElementSize()}, but optimized for width only.
+ *
+ * @param {string|Element} element A selector of a DOM element or a DOM element.
+ * @return {Array|Object} The return value of this hook can be destructured as an array as well as an object
+ *                        and its the same as the return value of the "useElementSize()" hook,
+ *                        the only difference being that the dimension object will only have the "width" property.
+ *
+ */
+
+function useElementWidth(element) {
+  var dimensionProps = React.useMemo(function () {
+    return ["width"];
+  }, []);
+  return useElementSize(element, dimensionProps);
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook returning an array for a given a data structure.
+ *
+ * @param {Array|ImmutableLinkedOrderedMap} dataStructure A data structure.
+ * @return {Array} An array containing the values of the data structure.
+ *                 If an array is given as the data structure, the same array will be returned by this hook.
+ */
+
+function useArray(dataStructure) {
+  var arrayFactoryFn = useFactory(function () {
+    return [[ImmutableLinkedOrderedMap__default["default"].isMap(dataStructure), function () {
+      return dataStructure.values();
+    }], function () {
+      return dataStructure;
+    }];
+  }, [dataStructure]);
+  return arrayFactoryFn();
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * @type {string}
+ */
+
+var uniqueKeyPrefix = "react-js-utl-ellViKYMFK-";
+/**
+ * Hook returning a unique key.
+ *
+ * @param {*} [dep] An optional dep which, if set and when changed, will force the regeneration of a new key.
+ * @return {string} A unique key.
+ */
+
+function useUniqueKey() {
+  var dep = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : void 0;
+  var key = React.useMemo(function () {
+    return uniqueId("".concat(trimRight("".concat(uniqueKeyPrefix).concat(typeof dep === "string" ? dep : "", "-"), "-"), "-"));
+  }, [dep]);
+  return key;
+}
+
+/**
+ * Hook for default values.
+ *
+ * @param {*} [defaultValue] A default value.
+ * @param {*} [valueIfDefaultValueIsUndefined] A value to use if the given default value is undefined.
+ * @return {Array} A tuple with initially the default value at index 0, as well as a callback to set
+ *                 the value at index 1.
+ */
+
+function useDefaultValue() {
+  var defaultValue = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : void 0;
+  var valueIfDefaultValueIsUndefined = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : void 0;
+
+  var _useState = React.useState(defaultVal(defaultValue, valueIfDefaultValueIsUndefined)),
+      _useState2 = _slicedToArray(_useState, 2),
+      value = _useState2[0],
+      setValue = _useState2[1];
+
+  return [value, setValue];
+}
+
+/*
+ * Copyright (c) 2021 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/**
+ * @type {Function}
+ */
+const testConditionFn = testCondition =>
+  Boolean(
+    typeof testCondition === "function" ? testCondition() : testCondition
+  );
+
+/**
+ * A function to easily create interchangeable factories switching them
+ * in a declarative way based on the given runtime parameters.
+ *
+ * @param {Function} tuples An array of tuples, each tuple being an array of two elements:
+ *
+ *                              - testCondition: A boolean value or a function returning a boolean value
+ *                                               which, if "true", instructs this function to return the "factory" factory
+ *                                               bound to this "testCondition".
+ *                                               Note that the first "factory" for which "testCondition" is truthy
+ *                                               will be returned and further tuples will be ignored;
+ *
+ *                              - factory: Anything. The value to return if "testCondition" is a truthy value
+ *                                         or a function returning a truthy value.
+ *
+ *                          The last element of the returned tuples MAY not be a tuple array with two elements,
+ *                          and in such case it will be treated as the default factory value to return if none
+ *                          of the test conditions of the previous factories are satisfied.
+ *                          If the last tuple is not a default value and none of the test conditions of the previous
+ *                          factories are satisfied as well as for the factory of last tuple, then "undefined"
+ *                          will be returned by this function.
+ * @return {*} The first factory value for which the test is truthy or returns a truthy value, a default factory value,
+ *             or "undefined".
+ */
+function declarativeFactory(tuples) {
+  const factoryValue = (() => {
+    let i = 0;
+    // Loop through all the tuples except the last one (handled after this loop).
+    for (; i < tuples.length - 1; i++) {
+      const tuple = tuples[i];
+      const [testCondition, factoryValue] = tuple;
+      if (testConditionFn(testCondition)) {
+        // Test condition for factory value is satisfied.
+        return factoryValue;
+      }
+    }
+    const lastTuple = tuples[i];
+    if (isArray(lastTuple) && lastTuple.length === 2) {
+      const [testCondition, factoryValue] = lastTuple;
+      if (testConditionFn(testCondition)) {
+        // Test condition for last factory value is satisfied.
+        return factoryValue;
+      }
+
+      // No default and no factory value satisfying a test condition.
+      return void 0;
+    } else {
+      // Default factory value.
+      return lastTuple;
+    }
+  })();
+
+  return factoryValue;
+}
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty$1(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/**
+ * @type {string}
+ */
+var primitiveProp = "react-js-utl-primitive-rFOxpeMOVTDJMxE";
+/**
+ * Marks a function as a react-js-utl primitive.
+ *
+ * @param {Function} primitive A function to mark as a primitive.
+ * @param {string} primitiveKey A unique key identifying the primitive.
+ * @return {undefined}
+ */
+
+function primitive(primitive, primitiveKey) {
+  primitive[primitiveProp] = _objectSpread(_objectSpread({}, primitive[primitiveProp] || {}), {}, _defineProperty$1({}, primitiveKey, true));
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * @type {string}
+ */
+
+var primitiveKey = "visitor-GanIjeOSkQd2ZgV";
+/**
+ * Visitor primitive.
+ *
+ * @param {*} key The key to visit.
+ * @param {Function} visit The visitor's function to execute when visiting some data at the given key.
+ */
+
+function visitor(key, _visit) {
+  var visitor = {
+    key: key,
+    visit: function visit() {
+      return _visit.apply(void 0, arguments);
+    }
+  };
+  primitive(visitor, primitiveKey);
+  return visitor;
+}
+
+var curriedVisitor = curry(visitor);
+curriedVisitor[primitiveProp] = primitiveKey;
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Tests if the given value is a primitive of the given primitive type.
+ *
+ * @param {*} possiblePrimitive The given value.
+ * @param {Function} primitiveType The given primitive type.
+ * @return {boolean} True if the given value is a primitive of the given primitive type.
+ */
+
+function isPrimitiveOfType(possiblePrimitive, primitiveType) {
+  var primitiveKey = primitiveType[primitiveProp];
+  return !!(possiblePrimitive && possiblePrimitive[primitiveProp] && possiblePrimitive[primitiveProp][primitiveKey]);
+}
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var dataGetKey = function dataGetKey(data, key) {
+  return data.get(key);
+};
+/**
+ * @type {Object}
+ */
+
+
+var mapTraverseFactory = {
+  traverse: dataGetKey
+};
+/**
+ * @type {Object}
+ */
+
+var weakMapTraverseFactory = {
+  traverse: dataGetKey
+};
+/**
+ * @type {Object}
+ */
+
+var immutableLinkedOrderedMapTraverseFactory = {
+  traverse: dataGetKey
+};
+/**
+ * @type {Object}
+ */
+
+var propTraverseFactory = {
+  traverse: function traverse(data, key) {
+    return data[key];
+  }
+};
+/**
+ * @type {Object}
+ */
+
+var yesVisitorKeyFactory = function yesVisitorKeyFactory(visitor) {
+  return {
+    key: function key() {
+      return visitor.key;
+    },
+    visit: function visit() {
+      return visitor.visit.apply(visitor, arguments);
+    }
+  };
+};
+/**
+ * @type {Object}
+ */
+
+
+var noVisitorKeyFactory = function noVisitorKeyFactory(finalKey) {
+  return {
+    key: function key() {
+      return finalKey;
+    },
+    visit: function visit() {}
+  };
+};
+/**
+ * Hook returning a callback to traverse nested data.
+ *
+ * @param {Array|Object|Map|WeakMap|ImmutableLinkedOrderedMap} data The data. Can be any of the specified types which in turn have nested data
+ *                                                                  of any of the specified types.
+ * @param {Object} [obj] An optional object with further parameters.
+ * @param {boolean} [obj.pathCopy] Whether or not to create a copy of the current path and the data forming the path when traversing the nested data
+ *                                 instead of pushing to a single path array.
+ *                                 This parameter should be set to false only when the nested data is very deep and performance issues are experienced when using
+ *                                 this hook for the given data.
+ *                                 In case this parameter is set to false, eventual visitors (explained below) will receive an object where
+ *                                 the "path" and "pathData" properties will refer to the same arrays for every visitor.
+ * @return {(keys: Array) => *} The nested data callback which receives the keys and if called returns the nested data for the given keys, if any, or undefined.
+ *                              The nested data callback takes an array of keys as argument. Note that the array is flattened (only its first dimension)
+ *                              and therefore the following arrays will be treated as being the same array of keys:
+ *
+ *                                  import { useNestedDataCallback } from "react-js-utl/hooks";
+ *
+ *                                  // Inside functional component:
+ *                                  useNestedDataCallback(data)(["a", "b", "c", "d", "e"]);
+ *                                  useNestedDataCallback(data)(["a", "b", ["c", "d"], "e"]); // Same as above.
+ *
+ *                              Each element represents a nested key of the given data.
+ *
+ *                              An element can also be a visitor primitive returned by the "visitor" primitive function:
+ *
+ *                                  import { useNestedDataCallback } from "react-js-utl/hooks";
+ *                                  import { visitor } from "react-js-utl/primitives";
+ *
+ *                                  // Inside functional component:
+ *                                  useNestedDataCallback(data)([
+ *                                      "a",
+ *                                      visitor("b", ({
+ *                                          currentData,
+ *                                          depth,
+ *                                          key,
+ *                                          path,
+ *                                          pathData,
+ *                                          data,
+ *                                      }) => {
+ *                                          // Called when visiting the nested data ("currentData") for the "b" key (depth 1)
+ *                                          // if the data for the "b" key is not "undefined".
+ *                                      }),
+ *                                      "c",
+ *                                      "d",
+ *                                      "e"
+ *                                  ]);
+ *
+ *                              The visitor function allows to perform a custom behaviour when visiting the nested data.
+ *                              Note that the visitor function will only be called if the underlying visited data for a given nested key
+ *                              is not "undefined".
+ */
+
+
+function useNestedDataCallback(data) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$pathCopy = _ref.pathCopy,
+      pathCopy = _ref$pathCopy === void 0 ? true : _ref$pathCopy;
+
+  var prevData = usePrevious(data);
+  var finalDataFactory = useFactory(function () {
+    return [[data instanceof Map || data instanceof WeakMap || ImmutableLinkedOrderedMap__default["default"].isMap(data), function () {
+      return prevData === data ? prevData : data;
+    }], function () {
+      return shallowEqual(prevData, data) ? prevData : data;
+    }];
+  }, [data]);
+  var finalData = finalDataFactory();
+  var callback = React.useCallback(function (keys) {
+    var data = finalData;
+    var effectiveKeys = keys.flat();
+    var depth = 0;
+    var currentData = data;
+    var path = [];
+    var pathData = [];
+
+    var _iterator = _createForOfIteratorHelper(effectiveKeys),
+        _step;
+
+    try {
+      var _loop = function _loop() {
+        var key = _step.value;
+
+        if (!currentData) {
+          return "break";
+        }
+
+        var traverseFactory = declarativeFactory([[function () {
+          return currentData instanceof Map;
+        }, mapTraverseFactory], [function () {
+          return currentData instanceof WeakMap;
+        }, weakMapTraverseFactory], [function () {
+          return ImmutableLinkedOrderedMap__default["default"].isMap(currentData);
+        }, immutableLinkedOrderedMapTraverseFactory], propTraverseFactory]);
+        var visitorFactory = declarativeFactory([[function () {
+          return isPrimitiveOfType(key, curriedVisitor);
+        }, yesVisitorKeyFactory(key)], noVisitorKeyFactory(key)]);
+        var finalKey = visitorFactory.key();
+        currentData = traverseFactory.traverse(currentData, finalKey);
+
+        if (pathCopy) {
+          path = path.concat(finalKey);
+          pathData = pathData.concat(currentData);
+        } else {
+          path.push(finalKey);
+          pathData.push(currentData);
+        }
+
+        if (typeof currentData !== "undefined") {
+          visitorFactory.visit({
+            currentData: currentData,
+            depth: depth,
+            key: finalKey,
+            path: path,
+            pathData: pathData,
+            data: data
+          });
+        }
+
+        depth++;
+      };
+
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var _ret = _loop();
+
+        if (_ret === "break") break;
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    return depth === effectiveKeys.length ? currentData : void 0;
+  }, [finalData, pathCopy]);
+  return callback;
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to traverse nested data.
+ *
+ * @param {Array|Object|Map|WeakMap|ImmutableLinkedOrderedMap} data The data. Can be any of the specified types which in turn have nested data
+ *                                                                  of any of the specified types.
+ * @param {Array} keys An array of keys which will be passed to the underlying callback returned by the "useNestedDataCallback" hook used by "useNestedData".
+ *                     See the "useNestedDataCallback" hook for information about the shape of the keys array.
+ * @param {Object} [obj] An optional object with further parameters. See the "useNestedDataCallback" hook for information about the shape of this parameter.
+ * @return {*} The nested data.
+ */
+
+function useNestedData(data, keys) {
+  var obj = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var callback = useNestedDataCallback(data, obj);
+  var nestedData = React.useMemo(function () {
+    return callback(keys);
+  }, [callback, keys]);
+  return nestedData;
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Returns a memoized callback which never change and doesn't need a deps array
+ * as it is always up to date with the last callback given as parameter.
+ *
+ * @param {*} callback A callback or another value.
+ * @return {*} The memoized callback which never changes or the given value
+ *             if the given "callback" is not a function.
+ */
+
+function useMemoCallback(callback) {
+  var callbackRef = React.useRef(callback);
+  React.useMemo(function () {
+    callbackRef.current = callback;
+  }, [callback]);
+  var memoCallback = React.useCallback(function () {
+    return callbackRef.current.apply(callbackRef, arguments);
+  }, [callbackRef]);
+  return typeof callbackRef.current === "function" ? memoCallback : callback;
+}
+
+/**
+ * Hook returning whether the user's computer or device is online or offline.
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/onLine
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/Online_and_offline_events
+ *
+ * @return {boolean} True if online, false if offline.
+ */
+
+function useIsOnline() {
+  var windowRef = useWindowRef();
+
+  var _useState = React.useState(function () {
+    return windowRef.current ? windowRef.current.navigator.onLine : false;
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      isOnline = _useState2[0],
+      setIsOnline = _useState2[1];
+
+  var onlineCallbackRef = useCallbackRef(function () {
+    setIsOnline(true);
+  });
+  var offlineCallbackRef = useCallbackRef(function () {
+    setIsOnline(false);
+  });
+  React.useEffect(function () {
+    var onlineCallback = function onlineCallback() {
+      return onlineCallbackRef.current();
+    };
+
+    var offlineCallback = function offlineCallback() {
+      return offlineCallbackRef.current();
+    };
+
+    var w = windowRef.current;
+    w.addEventListener("online", onlineCallback);
+    w.addEventListener("offline", offlineCallback);
+    return function () {
+      w.removeEventListener("online", onlineCallback);
+      w.removeEventListener("offline", offlineCallback);
+    };
+  }, [windowRef, onlineCallbackRef, offlineCallbackRef]);
+  return isOnline;
+}
+
+/**
+ * Hook returning a ref callback to measure the dimensions of a DOM element and the current dimensions of the measured element.
+ *
+ * @see https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node
+ *
+ * @return {Array} An array containing the ref callback at index 0 and the dimensions (an object with a "width" and "height"
+ *                 property) of the last measurement of the element at index 1.
+ */
+
+function useClientRect() {
+  var _useState = React.useState(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      rect = _useState2[0],
+      setRect = _useState2[1];
+
+  var ref = React.useCallback(function (node) {
+    if (node !== null) {
+      setRect(node.getBoundingClientRect());
+    }
+  }, []);
+  return [ref, rect];
+}
+
+/**
+ * @type {Function}
+ */
+
+var setRef = function setRef(refToSync, args) {
+  var _args = _slicedToArray(args, 1),
+      ref = _args[0];
+
+  if (typeof refToSync === "function") {
+    refToSync.apply(void 0, _toConsumableArray(args));
+  } else if (refToSync) {
+    refToSync.current = ref;
+  }
+};
+/**
+ * Hook returning a callback ref which synchronizes all the refs given as parameter.
+ *
+ * @param {...Object} refs The refs to sync.
+ * @return {Function} The callback ref synchronizing the given refs.
+ */
+
+
+function useSyncRefsCallback() {
+  for (var _len = arguments.length, refs = new Array(_len), _key = 0; _key < _len; _key++) {
+    refs[_key] = arguments[_key];
+  }
+
+  var syncCallbackRef = useCallbackRef(function () {
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    refs.map(function (refToSync) {
+      return setRef(refToSync, args);
+    });
+  });
+  var callbackRef = React.useCallback(function () {
+    syncCallbackRef.current.apply(syncCallbackRef, arguments);
+  }, [syncCallbackRef]);
+  return callbackRef;
+}
+
+/**
+ * Hook detecting wrapped DOM children elements given a ref.
+ *
+ * @param {Object} ref A ref.
+ * @return {Object} An object with the following properties:
+ *
+ *                      - areWrapped (bool): true if the DOM children elements wrap and are not on the same line
+ *                                           (according to their top position);
+ *                      - wrapped (Element[]): An array of the wrapped DOM children elements;
+ */
+
+function useDetectWrappedChildren(ref) {
+  var _useElementSize = useElementSize(ref, ["width"]),
+      _useElementSize2 = _slicedToArray(_useElementSize, 1),
+      width = _useElementSize2[0].width;
+
+  var prevWidth = usePrevious(width);
+
+  var _usePOJOState = usePOJOState(function () {
+    return {
+      areWrapped: void 0,
+      wrapped: []
+    };
+  }),
+      _usePOJOState2 = _slicedToArray(_usePOJOState, 2),
+      state = _usePOJOState2[0],
+      setState = _usePOJOState2[1];
+
+  React.useLayoutEffect(function () {
+    if (ref.current && ref.current.children && width !== prevWidth) {
+      var wrapped = detectWrapped(ref.current.children);
+      setState({
+        areWrapped: !isEmpty(wrapped),
+        wrapped: wrapped
+      });
+    }
+  }, [setState, prevWidth, width, ref]);
+  return state;
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to execute a callback whenever the hash fragment of the page ("window.location.hash") changes.
+ *
+ * @param {Function} onHashFragmentChange The callback to execute.s
+ * @return {undefined}
+ */
+
+function useHashFragmentChange(onHashFragmentChange) {
+  React.useEffect(function () {
+    window.addEventListener("hashchange", onHashFragmentChange);
+    return function () {
+      return window.removeEventListener("hashchange", onHashFragmentChange);
+    };
+  }, [onHashFragmentChange]);
+}
+
+/**
+ * Hook to use a POJO state which merges values of the previous state with the next one
+ * if the partial state update of the next state is not the same as the previous state
+ * for the same keys depending on the POJO passed as parameter.
+ *
+ * The difference from the "usePOJOState" hook is that as soon as the POJO passed as parameter changes
+ * (i.e. its reference points to another object), the state is reinitialized.
+ *
+ * Another difference is that this hook doesn't accept a function returning a POJO as its initial state because
+ * it doesn't make sense in this context as the POJO itself is needed to be passed as parameter to this hook
+ * in order to determine if it changed since the last rendering.
+ *
+ * @param {Object} POJO A POJO (Plain Old JavaScript Object).
+ * @return {Array} A tuple of two values, current state POJO and callback to set state,
+ *                 like the one returned by the "useState" hook.
+ *
+ *                 The callback to set state may receive an updater function which will receive
+ *                 the previous POJO state as argument and must return the next partial POJO state
+ *                 update or "null" (to bail out of the state update, read below).
+ *
+ *                 If the updater function returns "null" or a partial POJO state update which
+ *                 has the same values for the same keys as the current POJO state, the update will be
+ *                 bailed out as for the "useState" hook.
+ */
+
+function usePOJOMemoState(POJO) {
+  var originalPOJO = POJO;
+  var rehidrateStateRef = React.useRef(false);
+  POJO = React.useMemo(function () {
+    rehidrateStateRef.current = true;
+    return originalPOJO;
+  }, [originalPOJO]);
+  var setState;
+
+  var _usePOJOState = usePOJOState(POJO);
+
+  var _usePOJOState2 = _slicedToArray(_usePOJOState, 2);
+
+  POJO = _usePOJOState2[0];
+  setState = _usePOJOState2[1];
+  React.useEffect(function () {
+    if (rehidrateStateRef.current) {
+      rehidrateStateRef.current = false;
+      setState(originalPOJO);
+    }
+  }, [originalPOJO, setState]);
+  return [POJO, setState];
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to use a state with a `setState` function receiving a callback as its second parameter
+ * called in a layout effect after the state change is performed.
+ *
+ * @param {*|Function} initialState The initial state or a lazy callback returning the initial state.
+ * @return {Array} A tuple of two values, current state and callback to set state,
+ *                 like the one returned by the "useState" hook.
+ *
+ *                 The callback to set state may receive an updater function which will receive
+ *                 the previous state as argument and must return the next state.
+ *
+ *                 The callback to set state may also receive a callback as its second parameter,
+ *                 which is called in a layout effect after the state change is performed.
+ */
+
+function useStateWithLayoutEffectCallback(initialState) {
+  return useStateWithSetStateCallback({
+    initialState: initialState,
+    useState: React.useState,
+    useEffect: React.useLayoutEffect
+  });
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to use a POJO state with a `setState` function receiving a callback as its second parameter
+ * called in a layout effect after the state change is performed.
+ *
+ * @param {*|Function} initialState The initial POJO state or a lazy callback returning the initial POJO state.
+ * @return {Array} A tuple of two values, current POJO state and callback to set the POJO state,
+ *                 like the one returned by the "usePOJOState" hook.
+ *
+ *                 The callback to set state may receive an updater function which will receive
+ *                 the previous state as argument and must return the next state.
+ *
+ *                 The callback to set state may also receive a callback as its second parameter,
+ *                 which is called in a layout effect after the state change is performed.
+ */
+
+function usePOJOStateWithLayoutEffectCallback(initialState) {
+  return useStateWithSetStateCallback({
+    initialState: initialState,
+    useState: usePOJOState,
+    useEffect: React.useLayoutEffect,
+    onStateUpdate: onStateUpdate,
+    onHasBailedOut: onHasBailedOut
+  });
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to use a state with a `setState` function which can be awaited until the state change is performed
+ * and the underlying layout effect (`useLayoutEffect`) is executed.
+ *
+ * @param {*|Function} initialState The initial state or a lazy callback returning the initial state.
+ * @return {Array} A tuple of two values, current state and callback to set state,
+ *                 like the one returned by the "useState" hook.
+ *
+ *                 The callback to set state may be awaited until the state change is performed
+ *                 and the underlying layout effect (`useLayoutEffect`) is executed.
+ */
+
+function useAwaitableStateWithLayoutEffect(initialState) {
+  return useAwaitableState({
+    initialState: initialState,
+    useStateWithSetStateCallback: useStateWithLayoutEffectCallback
+  });
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to use a POJO state with a `setState` function which can be awaited until the POJO state change is performed
+ * and the underlying layout effect (`useLayoutEffect`) is executed.
+ *
+ * @param {*|Function} initialState The initial POJO state or a lazy callback returning the initial POJO state.
+ * @return {Array} A tuple of two values, current POJO state and callback to set POJO state,
+ *                 like the one returned by the "useState" hook.
+ *
+ *                 The callback to set POJO state may be awaited until the POJO state change is performed
+ *                 and the underlying layout effect (`useLayoutEffect`) is executed.
+ */
+
+function useAwaitablePOJOStateWithLayoutEffect(initialState) {
+  return useAwaitableState({
+    initialState: initialState,
+    useStateWithSetStateCallback: usePOJOStateWithLayoutEffectCallback
+  });
+}
+
+function useEventListener(t,r,i,o){void 0===i&&(i=global),void 0===o&&(o={});var c=React.useRef(),u=o.capture,a=o.passive,v=o.once;React.useEffect(function(){c.current=r;},[r]),React.useEffect(function(){if(i&&i.addEventListener){var e=function(e){return c.current(e)},n={capture:u,passive:a,once:v};return i.addEventListener(t,e,n),function(){i.removeEventListener(t,e,n);}}},[t,i,u,a,v]);}
+
+/**
+ * @type {Function}
+ */
+
+var detect = function detect(_ref) {
+  var ref = _ref.ref,
+      isScrollable = _ref.isScrollable,
+      setIsScrollable = _ref.setIsScrollable,
+      shouldDetectHorizontallyScrollable = _ref.shouldDetectHorizontallyScrollable;
+
+  if (ref.current) {
+    var hasScrollbar = shouldDetectHorizontallyScrollable ? hasHorizontalScrollbar(ref.current) : hasVerticalScrollbar(ref.current);
+
+    if (hasScrollbar && !isScrollable) {
+      setIsScrollable(true);
+    } else if (!hasScrollbar && isScrollable) {
+      setIsScrollable(false);
+    }
+  }
+};
+/**
+ * @type {Function}
+ */
+
+
+var throttledDetect = throttle(detect, 100);
+/**
+ * @type {Function}
+ */
+
+var debouncedDetect = debounce(detect, 110);
+
+function useDetectScrollablePrivate(ref) {
+  var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref2$detectOnResize = _ref2.detectOnResize,
+      detectOnResize = _ref2$detectOnResize === void 0 ? true : _ref2$detectOnResize,
+      _ref2$shouldDetectHor = _ref2.shouldDetectHorizontallyScrollable,
+      shouldDetectHorizontallyScrollable = _ref2$shouldDetectHor === void 0 ? false : _ref2$shouldDetectHor;
+
+  var _useState = React.useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isScrollable = _useState2[0],
+      setIsScrollable = _useState2[1];
+
+  var detectIfScrollable = React.useCallback(function () {
+    detect({
+      ref: ref,
+      isScrollable: isScrollable,
+      setIsScrollable: setIsScrollable,
+      shouldDetectHorizontallyScrollable: shouldDetectHorizontallyScrollable
+    });
+  }, [ref, isScrollable, shouldDetectHorizontallyScrollable]);
+  React.useEffect(function () {
+    detectIfScrollable();
+  });
+  React.useEffect(function () {
+    if (ref.current && window.ResizeObserver) {
+      var element = ref.current;
+      var resizeObserver = new ResizeObserver(function () {
+        detectIfScrollable();
+      });
+      resizeObserver.observe(ref.current);
+      return function () {
+        element && resizeObserver.unobserve(element);
+        resizeObserver.disconnect();
+      };
+    }
+  }, [ref, detectIfScrollable]);
+
+  var _ref3 = detectOnResize ? ["resize", function () {
+    throttledDetect({
+      ref: ref,
+      isScrollable: isScrollable,
+      setIsScrollable: setIsScrollable,
+      shouldDetectHorizontallyScrollable: shouldDetectHorizontallyScrollable
+    });
+    debouncedDetect({
+      ref: ref,
+      isScrollable: isScrollable,
+      setIsScrollable: setIsScrollable,
+      shouldDetectHorizontallyScrollable: shouldDetectHorizontallyScrollable
+    });
+  }] : [void 0, function () {}],
+      _ref4 = _slicedToArray(_ref3, 2),
+      eventName = _ref4[0],
+      listener = _ref4[1];
+
+  useEventListener(eventName, listener);
+  return isScrollable;
+}
+/**
+ * Hook to determine if an element is scrollable.
+ *
+ * @param {Object} ref A React ref (e.g. returned by `useRef()`) for the underlying element.
+ * @param {Object} [options] Options.
+ * @param {boolean} [options.detectOnResize] True to detect the scrollbars also when the window is resized (default),
+ *                                           false otherwise.
+ * @return {Object} An object with two properties:
+ *
+ *                      - isVerticallyScrollable (boolean): True if the element is vertically scrollable, false otherwise.
+ *                      - isHorizontallyScrollable (boolean): True if the element is horizontally scrollable, false otherwise.
+ *
+ */
+
+
+function useDetectScrollable(ref) {
+  var _ref5 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref5$detectOnResize = _ref5.detectOnResize,
+      detectOnResize = _ref5$detectOnResize === void 0 ? true : _ref5$detectOnResize;
+
+  var isVerticallyScrollable = useDetectScrollablePrivate(ref, {
+    detectOnResize: detectOnResize
+  });
+  var isHorizontallyScrollable = useDetectScrollablePrivate(ref, {
+    detectOnResize: detectOnResize,
+    shouldDetectHorizontallyScrollable: true
+  });
+  return {
+    isVerticallyScrollable: isVerticallyScrollable,
+    isHorizontallyScrollable: isHorizontallyScrollable
+  };
+}
+/**
+ * Hook to determine if an element is vertically scrollable.
+ *
+ * @param {Object} ref A React ref (e.g. returned by `useRef()`) for the underlying element.
+ * @param {Object} [options] Options.
+ * @param {boolean} [options.detectOnResize] True to detect the scrollbars also when the window is resized (default),
+ *                                           false otherwise.
+ * @return {boolean} True if the element is vertically scrollable, false otherwise.
+ */
+
+function useDetectVerticallyScrollable(ref) {
+  var _ref6 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref6$detectOnResize = _ref6.detectOnResize,
+      detectOnResize = _ref6$detectOnResize === void 0 ? true : _ref6$detectOnResize;
+
+  return useDetectScrollablePrivate(ref, {
+    detectOnResize: detectOnResize
+  });
+}
+/**
+ * Hook to determine if an element is horizontally scrollable.
+ *
+ * @param {Object} ref A React ref (e.g. returned by `useRef()`) for the underlying element.
+ * @param {Object} [options] Options.
+ * @param {boolean} [options.detectOnResize] True to detect the scrollbars also when the window is resized (default),
+ *                                           false otherwise.
+ * @return {Object} True if the element is horizontally scrollable, false otherwise.
+ */
+
+function useDetectHorizontallyScrollable(ref) {
+  var _ref7 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref7$detectOnResize = _ref7.detectOnResize,
+      detectOnResize = _ref7$detectOnResize === void 0 ? true : _ref7$detectOnResize;
+
+  return useDetectScrollablePrivate(ref, {
+    detectOnResize: detectOnResize,
+    shouldDetectHorizontallyScrollable: true
+  });
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+/**
+ * Hook to return a callback which, if called with a key/id, will return a new ref for that key
+ * or the same ref for that key if the ref for that key was already created previously
+ * (therefore this callback is useful e.g. when creating refs dynamically in a loop or when using `.map()`
+ * during the rendering of a React component).
+ *
+ * @return {(key: string|number) => {current: *}} The callback accepting a key and returning a ref for that key
+ *                                                (the same ref for that key if a ref for that key was already created previously).
+ */
+
+function useKeyRefCallback() {
+  var mapRef = React.useRef({});
+  return React.useCallback(function (key) {
+    mapRef.current[key] = mapRef.current[key] || /*#__PURE__*/React__default["default"].createRef();
+    return mapRef.current[key];
+  }, []);
+}
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+var index$1 = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	useAwaitableState: useAwaitableStateWithEffect,
+	useAwaitablePOJOState: useAwaitablePOJOStateWithEffect,
+	usePrevious: usePrevious,
+	useUpdateEffect: useUpdateEffect,
+	useMountEffect: useMountEffect,
+	useUnmountEffect: useUnmountEffect,
+	usePOJOState: usePOJOState,
+	useForceUpdate: useForceUpdate,
+	useHOFCallback: useHOFCallback,
+	useFactory: useFactory,
+	useExtend: useExtend,
+	useLoopCallback: useLoopCallback,
+	useWindowRef: useWindowRef,
+	useElementSize: useElementSize,
+	useElementHeight: useElementHeight,
+	useElementWidth: useElementWidth,
+	useArray: useArray,
+	useUniqueKey: useUniqueKey,
+	useDefaultValue: useDefaultValue,
+	useShallowEqualMemo: useShallowEqualMemo,
+	useCallbackRef: useCallbackRef,
+	useIsUpdate: useIsUpdate,
+	useCumulativeShallowDiff: useCumulativeShallowDiff,
+	useNestedDataCallback: useNestedDataCallback,
+	useNestedData: useNestedData,
+	useMemoCallback: useMemoCallback,
+	useIsOnline: useIsOnline,
+	useClientRect: useClientRect,
+	useLazyRef: useLazyRef,
+	useSyncRefsCallback: useSyncRefsCallback,
+	useDetectWrappedChildren: useDetectWrappedChildren,
+	useHashFragmentChange: useHashFragmentChange,
+	usePOJOMemoState: usePOJOMemoState,
+	useStateWithEffectCallback: useStateWithEffectCallback,
+	useStateWithLayoutEffectCallback: useStateWithLayoutEffectCallback,
+	usePOJOStateWithEffectCallback: usePOJOStateWithEffectCallback,
+	usePOJOStateWithLayoutEffectCallback: usePOJOStateWithLayoutEffectCallback,
+	useAwaitableStateWithLayoutEffect: useAwaitableStateWithLayoutEffect,
+	useAwaitablePOJOStateWithLayoutEffect: useAwaitablePOJOStateWithLayoutEffect,
+	useDetectScrollable: useDetectScrollable,
+	useDetectVerticallyScrollable: useDetectVerticallyScrollable,
+	useDetectHorizontallyScrollable: useDetectHorizontallyScrollable,
+	useKeyRefCallback: useKeyRefCallback
+});
+
+/*
+ * Copyright (c) 2022 Anton Bagdatyev (Tonix)
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+var index = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	_: _,
+	visitor: curriedVisitor
+});
+
+exports.hooks = index$1;
+exports.primitives = index;
+exports.utils = index$2;
+//# sourceMappingURL=index.js.map
