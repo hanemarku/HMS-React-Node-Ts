@@ -1,0 +1,67 @@
+{
+  "name": "node-utl",
+  "version": "1.15.0",
+  "description": "Node.js utilities.",
+  "keywords": [
+    "utl",
+    "utility",
+    "utilities",
+    "utils",
+    "node"
+  ],
+  "author": "Anton Bagdatyev (Tonix)",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "es6/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonix-tuft/node-utl.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm run build-all && ./node_modules/.bin/onchange './src/**' -- npm run build-all",
+    "mkdir-build": "mkdir -p ./dist && mkdir -p ./es6",
+    "clear-build-dist": "find ./dist ! -name '.gitignore' -type f -exec rm -f {} +",
+    "clear-build-es6": "find ./es6 ! -name '.gitignore' -type f -exec rm -f {} +",
+    "clear-build": "npm run clear-build-dist && npm run clear-build-es6",
+    "build-dist": "cross-env BABEL_ENV=dist ./node_modules/.bin/babel ./src --out-dir ./dist --source-maps --copy-files",
+    "build-es6": "cross-env BABEL_ENV=es6 ./node_modules/.bin/babel ./src --out-dir ./es6 --source-maps --copy-files",
+    "build-all": "npm run mkdir-build && npm run clear-build && npm run build-dist && npm run build-es6",
+    "publish-git": "npm publish && git push && git push --tags",
+    "publish-patch": "npm run build-all && npm version patch && npm run publish-git",
+    "publish-minor": "npm run build-all && npm version minor && npm run publish-git",
+    "publish-major": "npm run build-all && npm version major && npm run publish-git"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/traverse": "^7.10.5",
+    "@babel/types": "^7.10.5",
+    "@types/node": "^13.13.14",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "eslint": "^7.32.0",
+    "lodash": "^4.17.19",
+    "minimist": ">=1.2.3",
+    "nodemon": "^2.0.4",
+    "onchange": "^6.1.1",
+    "serialize-javascript": "^3.1.0",
+    "typescript": "^3.9.7",
+    "glob-parent": ">=5.1.2"
+  },
+  "bugs": {
+    "url": "https://github.com/tonix-tuft/node-utl/issues"
+  },
+  "homepage": "https://github.com/tonix-tuft/node-utl#readme",
+  "dependencies": {},
+  "files": [
+    "dist",
+    "src",
+    "es6"
+  ]
+}

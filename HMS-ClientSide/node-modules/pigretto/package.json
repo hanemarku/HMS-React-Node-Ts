@@ -1,0 +1,70 @@
+{
+  "name": "pigretto",
+  "version": "2.29.0",
+  "description": "A JS library to easily implement proxies, facades, lazy loading and monkey patching using an API with an AOP flavor.",
+  "keywords": [
+    "proxy",
+    "lazy-loading",
+    "lazy",
+    "monkey-patching"
+  ],
+  "author": "Anton Bagdatyev (Tonix)",
+  "license": "MIT",
+  "main": "dist/pigretto.js",
+  "module": "dist/es6/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonix-tuft/pigretto.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "WEBPACK_ENV=watch webpack --progress --colors --watch",
+    "clear-build": "rm -Rf ./dist && mkdir ./dist",
+    "dev-build": "WEBPACK_ENV=dev webpack --progress --colors",
+    "build": "WEBPACK_ENV=build webpack",
+    "dev-build-ie11": "WEBPACK_ENV=dev webpack --progress --colors --config webpack.config.ie11.js",
+    "build-ie11": "WEBPACK_ENV=build webpack --config webpack.config.ie11.js",
+    "build-all-ie11": "npm run build-ie11 && npm run dev-build-ie11",
+    "publish-git": "npm publish && git push && git push --tags",
+    "build-all": "npm run clear-build && npm run build && npm run dev-build && npm run build-module && npm run build-all-ie11",
+    "publish-patch": "npm run build-all && npm version patch && npm run publish-git",
+    "publish-minor": "npm run build-all && npm version minor && npm run publish-git",
+    "publish-major": "npm run build-all && npm version major && npm run publish-git",
+    "build-module": "cross-env BABEL_ENV=module ./node_modules/.bin/babel ./src --out-dir ./dist/es6 --source-maps --copy-files"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "babel-loader": "^8.1.0",
+    "core-js": "^3.6.5",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.4",
+    "minimist": ">=1.2.3",
+    "regenerator-runtime": "^0.13.5",
+    "serialize-javascript": "^2.1.2",
+    "terser-webpack-plugin": "^3.0.2",
+    "typescript": "^3.9.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "bugs": {
+    "url": "https://github.com/tonix-tuft/pigretto/issues"
+  },
+  "homepage": "https://github.com/tonix-tuft/pigretto#readme",
+  "dependencies": {
+    "declarative-factory": "^1.12.0",
+    "escape-string-regexp": "^2.0.0",
+    "js-utl": "^4.18.0"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": false
+}
